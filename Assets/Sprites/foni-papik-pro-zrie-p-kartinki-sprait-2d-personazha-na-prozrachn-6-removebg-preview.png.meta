@@ -1,0 +1,650 @@
+fileFormatVersion: 2
+guid: d67554378bbd780fbbdbebdb84bb0945
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8503193359817418788
+    second: foni-papik-pro-zrie-p-kartinki-sprait-2d-personazha-na-prozrachn-6-removebg-preview_0
+  - first:
+      213: -1950050144674190783
+    second: foni-papik-pro-zrie-p-kartinki-sprait-2d-personazha-na-prozrachn-6-removebg-preview_1
+  - first:
+      213: 8560881466776203066
+    second: foni-papik-pro-zrie-p-kartinki-sprait-2d-personazha-na-prozrachn-6-removebg-preview_2
+  - first:
+      213: 8528582438740901016
+    second: foni-papik-pro-zrie-p-kartinki-sprait-2d-personazha-na-prozrachn-6-removebg-preview_3
+  - first:
+      213: 7871840848768626417
+    second: foni-papik-pro-zrie-p-kartinki-sprait-2d-personazha-na-prozrachn-6-removebg-preview_4
+  - first:
+      213: -2975180392060659845
+    second: foni-papik-pro-zrie-p-kartinki-sprait-2d-personazha-na-prozrachn-6-removebg-preview_5
+  - first:
+      213: -325998215101066655
+    second: foni-papik-pro-zrie-p-kartinki-sprait-2d-personazha-na-prozrachn-6-removebg-preview_6
+  - first:
+      213: -7985084657208738523
+    second: foni-papik-pro-zrie-p-kartinki-sprait-2d-personazha-na-prozrachn-6-removebg-preview_7
+  - first:
+      213: -1371196154882054242
+    second: foni-papik-pro-zrie-p-kartinki-sprait-2d-personazha-na-prozrachn-6-removebg-preview_8
+  - first:
+      213: 100942287264042759
+    second: foni-papik-pro-zrie-p-kartinki-sprait-2d-personazha-na-prozrachn-6-removebg-preview_9
+  - first:
+      213: -837597862720184852
+    second: foni-papik-pro-zrie-p-kartinki-sprait-2d-personazha-na-prozrachn-6-removebg-preview_10
+  - first:
+      213: 5464306755216533325
+    second: foni-papik-pro-zrie-p-kartinki-sprait-2d-personazha-na-prozrachn-6-removebg-preview_11
+  - first:
+      213: -6164631370232971365
+    second: foni-papik-pro-zrie-p-kartinki-sprait-2d-personazha-na-prozrachn-6-removebg-preview_12
+  - first:
+      213: -8897770656249640005
+    second: foni-papik-pro-zrie-p-kartinki-sprait-2d-personazha-na-prozrachn-6-removebg-preview_13
+  - first:
+      213: 5322273865398514971
+    second: foni-papik-pro-zrie-p-kartinki-sprait-2d-personazha-na-prozrachn-6-removebg-preview_14
+  - first:
+      213: 5298368103426352740
+    second: foni-papik-pro-zrie-p-kartinki-sprait-2d-personazha-na-prozrachn-6-removebg-preview_15
+  - first:
+      213: 6837529014100447635
+    second: foni-papik-pro-zrie-p-kartinki-sprait-2d-personazha-na-prozrachn-6-removebg-preview_16
+  - first:
+      213: 3945136885065599765
+    second: foni-papik-pro-zrie-p-kartinki-sprait-2d-personazha-na-prozrachn-6-removebg-preview_17
+  - first:
+      213: -525722615024657399
+    second: foni-papik-pro-zrie-p-kartinki-sprait-2d-personazha-na-prozrachn-6-removebg-preview_18
+  - first:
+      213: -5985473061289837829
+    second: foni-papik-pro-zrie-p-kartinki-sprait-2d-personazha-na-prozrachn-6-removebg-preview_19
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: foni-papik-pro-zrie-p-kartinki-sprait-2d-personazha-na-prozrachn-6-removebg-preview_0
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 243
+        width: 89
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 428a0641f49610670800000000000000
+      internalID: 8503193359817418788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: foni-papik-pro-zrie-p-kartinki-sprait-2d-personazha-na-prozrachn-6-removebg-preview_1
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 333
+        width: 95
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14aee78a9b700f4e0800000000000000
+      internalID: -1950050144674190783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: foni-papik-pro-zrie-p-kartinki-sprait-2d-personazha-na-prozrachn-6-removebg-preview_2
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 243
+        width: 95
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3fab67265c5ec670800000000000000
+      internalID: 8560881466776203066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: foni-papik-pro-zrie-p-kartinki-sprait-2d-personazha-na-prozrachn-6-removebg-preview_3
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 332
+        width: 70
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89c39caaa8c9b5670800000000000000
+      internalID: 8528582438740901016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: foni-papik-pro-zrie-p-kartinki-sprait-2d-personazha-na-prozrachn-6-removebg-preview_4
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 334
+        width: 82
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1fe634f8b856e3d60800000000000000
+      internalID: 7871840848768626417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: foni-papik-pro-zrie-p-kartinki-sprait-2d-personazha-na-prozrachn-6-removebg-preview_5
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 333
+        width: 87
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b775484523906b6d0800000000000000
+      internalID: -2975180392060659845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: foni-papik-pro-zrie-p-kartinki-sprait-2d-personazha-na-prozrachn-6-removebg-preview_6
+      rect:
+        serializedVersion: 2
+        x: 395
+        y: 333
+        width: 67
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1625d7fb952d97bf0800000000000000
+      internalID: -325998215101066655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: foni-papik-pro-zrie-p-kartinki-sprait-2d-personazha-na-prozrachn-6-removebg-preview_7
+      rect:
+        serializedVersion: 2
+        x: 470
+        y: 332
+        width: 83
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52db6a1afc74f2190800000000000000
+      internalID: -7985084657208738523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: foni-papik-pro-zrie-p-kartinki-sprait-2d-personazha-na-prozrachn-6-removebg-preview_8
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 242
+        width: 129
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e97afdeac5888fce0800000000000000
+      internalID: -1371196154882054242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: foni-papik-pro-zrie-p-kartinki-sprait-2d-personazha-na-prozrachn-6-removebg-preview_9
+      rect:
+        serializedVersion: 2
+        x: 349
+        y: 240
+        width: 91
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70f4037b97e966100800000000000000
+      internalID: 100942287264042759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: foni-papik-pro-zrie-p-kartinki-sprait-2d-personazha-na-prozrachn-6-removebg-preview_10
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 240
+        width: 93
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ceddfef7e214064f0800000000000000
+      internalID: -837597862720184852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: foni-papik-pro-zrie-p-kartinki-sprait-2d-personazha-na-prozrachn-6-removebg-preview_11
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 131
+        width: 72
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d47e270fa0e15db40800000000000000
+      internalID: 5464306755216533325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: foni-papik-pro-zrie-p-kartinki-sprait-2d-personazha-na-prozrachn-6-removebg-preview_12
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 131
+        width: 71
+        height: 106
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9fb80e2e64d27aa0800000000000000
+      internalID: -6164631370232971365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: foni-papik-pro-zrie-p-kartinki-sprait-2d-personazha-na-prozrachn-6-removebg-preview_13
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 131
+        width: 72
+        height: 106
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bbb88550bb4c48480800000000000000
+      internalID: -8897770656249640005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: foni-papik-pro-zrie-p-kartinki-sprait-2d-personazha-na-prozrachn-6-removebg-preview_14
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 132
+        width: 63
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b157c68c1e38cd940800000000000000
+      internalID: 5322273865398514971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: foni-papik-pro-zrie-p-kartinki-sprait-2d-personazha-na-prozrachn-6-removebg-preview_15
+      rect:
+        serializedVersion: 2
+        x: 349
+        y: 126
+        width: 92
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 466ecf5d7b5978940800000000000000
+      internalID: 5298368103426352740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: foni-papik-pro-zrie-p-kartinki-sprait-2d-personazha-na-prozrachn-6-removebg-preview_16
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 9
+        width: 74
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39152ea5968c3ee50800000000000000
+      internalID: 6837529014100447635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: foni-papik-pro-zrie-p-kartinki-sprait-2d-personazha-na-prozrachn-6-removebg-preview_17
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 10
+        width: 79
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51b40a04811ffb630800000000000000
+      internalID: 3945136885065599765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: foni-papik-pro-zrie-p-kartinki-sprait-2d-personazha-na-prozrachn-6-removebg-preview_18
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 9
+        width: 82
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90cd019211244b8f0800000000000000
+      internalID: -525722615024657399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: foni-papik-pro-zrie-p-kartinki-sprait-2d-personazha-na-prozrachn-6-removebg-preview_19
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 11
+        width: 57
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bfa362196f35feca0800000000000000
+      internalID: -5985473061289837829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      foni-papik-pro-zrie-p-kartinki-sprait-2d-personazha-na-prozrachn-6-removebg-preview_0: 8503193359817418788
+      foni-papik-pro-zrie-p-kartinki-sprait-2d-personazha-na-prozrachn-6-removebg-preview_1: -1950050144674190783
+      foni-papik-pro-zrie-p-kartinki-sprait-2d-personazha-na-prozrachn-6-removebg-preview_10: -837597862720184852
+      foni-papik-pro-zrie-p-kartinki-sprait-2d-personazha-na-prozrachn-6-removebg-preview_11: 5464306755216533325
+      foni-papik-pro-zrie-p-kartinki-sprait-2d-personazha-na-prozrachn-6-removebg-preview_12: -6164631370232971365
+      foni-papik-pro-zrie-p-kartinki-sprait-2d-personazha-na-prozrachn-6-removebg-preview_13: -8897770656249640005
+      foni-papik-pro-zrie-p-kartinki-sprait-2d-personazha-na-prozrachn-6-removebg-preview_14: 5322273865398514971
+      foni-papik-pro-zrie-p-kartinki-sprait-2d-personazha-na-prozrachn-6-removebg-preview_15: 5298368103426352740
+      foni-papik-pro-zrie-p-kartinki-sprait-2d-personazha-na-prozrachn-6-removebg-preview_16: 6837529014100447635
+      foni-papik-pro-zrie-p-kartinki-sprait-2d-personazha-na-prozrachn-6-removebg-preview_17: 3945136885065599765
+      foni-papik-pro-zrie-p-kartinki-sprait-2d-personazha-na-prozrachn-6-removebg-preview_18: -525722615024657399
+      foni-papik-pro-zrie-p-kartinki-sprait-2d-personazha-na-prozrachn-6-removebg-preview_19: -5985473061289837829
+      foni-papik-pro-zrie-p-kartinki-sprait-2d-personazha-na-prozrachn-6-removebg-preview_2: 8560881466776203066
+      foni-papik-pro-zrie-p-kartinki-sprait-2d-personazha-na-prozrachn-6-removebg-preview_3: 8528582438740901016
+      foni-papik-pro-zrie-p-kartinki-sprait-2d-personazha-na-prozrachn-6-removebg-preview_4: 7871840848768626417
+      foni-papik-pro-zrie-p-kartinki-sprait-2d-personazha-na-prozrachn-6-removebg-preview_5: -2975180392060659845
+      foni-papik-pro-zrie-p-kartinki-sprait-2d-personazha-na-prozrachn-6-removebg-preview_6: -325998215101066655
+      foni-papik-pro-zrie-p-kartinki-sprait-2d-personazha-na-prozrachn-6-removebg-preview_7: -7985084657208738523
+      foni-papik-pro-zrie-p-kartinki-sprait-2d-personazha-na-prozrachn-6-removebg-preview_8: -1371196154882054242
+      foni-papik-pro-zrie-p-kartinki-sprait-2d-personazha-na-prozrachn-6-removebg-preview_9: 100942287264042759
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
