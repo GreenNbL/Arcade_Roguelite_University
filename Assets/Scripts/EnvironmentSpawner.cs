@@ -39,8 +39,8 @@ public class Envirenment : MonoBehaviour
             {
                 if (rand <= prefabProb.GetProbability())
                 {
-                    Debug.Log("Random.value =" + rand);
-                    Debug.Log("CumulativeProbability =" + prefabProb.GetProbability());
+                    //Debug.Log("Random.value =" + rand);
+                    //Debug.Log("CumulativeProbability =" + prefabProb.GetProbability());
                     Instantiate(prefabProb.GetPrefab(), position, Quaternion.identity); // Создание префаба
                     break; // Выход из цикла после успешного спавна
                 }
