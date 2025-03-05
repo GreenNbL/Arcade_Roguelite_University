@@ -6,8 +6,20 @@ public class FoodItem : ItemScriptableObject
 {
     public float healAmount;
 
-    private void Start()
+    public GameObject player;
+
+    private void OnEnable()
     {
-        typeItem=ItemType.Food; 
+        typeItem=ItemType.Food;
+
+        clickable = true;
+
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
+    
+    public override void healPlayer()
+{
+        player.GetComponent<HeroStotistic>().health += healAmount;
+        player.GetComponent<HeroStotistic>().healthPoint.text = player.GetComponent<HeroStotistic>().health.ToString();
     }
 }

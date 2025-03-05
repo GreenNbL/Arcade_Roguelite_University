@@ -1,6 +1,8 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
+using UnityEngine.UI;
 public class InventorySlot : MonoBehaviour
 {
     public ItemScriptableObject item;
@@ -8,15 +10,16 @@ public class InventorySlot : MonoBehaviour
     public bool isEmpty = true;
     public GameObject iconGO;
     public TMP_Text textAmount;
-
     void Awake()
     {
-        this.iconGO = transform.GetChild(0).gameObject;
-        this.textAmount =  transform.GetChild(1).GetComponent<TMP_Text>();
+        this.iconGO = transform.GetChild(0).GetChild(1).gameObject;
+        this.textAmount =  transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>();
     }
     public void SetIcon( Sprite icon)
     {
         iconGO.GetComponent<Image>().color = new Color(1, 1, 1, 1);
         iconGO.GetComponent<Image>().sprite = icon;
     }
+
+
 }

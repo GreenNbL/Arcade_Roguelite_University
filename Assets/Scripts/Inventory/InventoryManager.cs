@@ -40,15 +40,19 @@ public class InventoryManager : MonoBehaviour
 
     }
 
-    public static void AddItem(ItemScriptableObject _item, int _amount)
+    public static void AddItem( ItemScriptableObject _item, int _amount)
     {
         foreach (InventorySlot slot in slots)
         {
             if(slot.item == _item)
             {
-                slot.amount += _amount;
-                slot.textAmount.text = slot.amount.ToString();
-                return;
+                if(slot.amount+ _amount <= _item.maxAmount)
+                {
+                    slot.amount += _amount;
+                    slot.textAmount.text = slot.amount.ToString();
+                    return;
+                }
+                break; 
             }
         }
         foreach (InventorySlot slot in slots)

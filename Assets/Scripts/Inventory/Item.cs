@@ -11,8 +11,8 @@ public class Item : MonoBehaviour
         //{
             if (other.CompareTag("Player")) // Проверяем, что столкновение с объектом игрока
             {
-                InventoryManager.AddItem(item, amount);
                 GameObject triggerObject = gameObject;
+                InventoryManager.AddItem(item, amount);
                 Destroy(triggerObject);
             }
         //}
