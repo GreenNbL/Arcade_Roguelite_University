@@ -59,10 +59,8 @@ public class UseItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     // Метод для переключения состояния рамки
     private void ToggleOutline()
     {
-        if (outline != null) // Проверка на null, чтобы избежать ошибок
-        {
-            outline.SetActive(!outline.activeSelf); // Переключение состояния рамки
-        }
+        InventoryManager.setInactiveOutline(slot.item.typeItem);
+        outline.SetActive(!outline.activeSelf); // Переключение состояния рамки
     }
 
     // Метод для регистрации наведения мыши на иконку

@@ -470,3 +470,4 @@ MonoBehaviour:
   isEmpty: 1
   iconGO: {fileID: 0}
   textAmount: {fileID: 0}
+  outline: {fileID: 6026747405899797258}

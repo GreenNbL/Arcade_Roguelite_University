@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using UnityEngine;
 using System.Collections.Generic;
+using static UnityEditor.Progress;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -84,6 +85,19 @@ public class InventoryManager : MonoBehaviour
             slot.item.increaseDamagePlayer();
         }
             
+    }
+    public static void setInactiveOutline(ItemType type)
+    {
+        foreach (InventorySlot slot in slots)
+        {
+            if (!slot.isEmpty)
+            {
+                if (slot.item.typeItem == type)
+                {
+                    slot.outline.SetActive(false);
+                }
+            }
+        }
     }
 
 }
