@@ -10,6 +10,7 @@ public class InventorySlot : MonoBehaviour
     public bool isEmpty = true;
     public GameObject iconGO;
     public TMP_Text textAmount;
+    public GameObject outline;
     void Awake()
     {
         this.iconGO = transform.GetChild(0).GetChild(1).gameObject;

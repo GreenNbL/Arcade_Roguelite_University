@@ -40,19 +40,20 @@ public class InventoryManager : MonoBehaviour
 
     }
 
-    public static void AddItem( ItemScriptableObject _item, int _amount)
+    public static void AddItem(ItemScriptableObject _item, int _amount)
     {
         foreach (InventorySlot slot in slots)
         {
-            if(slot.item == _item)
+            if (slot.item == _item)
             {
-                if(slot.amount+ _amount <= _item.maxAmount)
+                if (slot.amount + _amount <= _item.maxAmount)
                 {
                     slot.amount += _amount;
                     slot.textAmount.text = slot.amount.ToString();
+                    ñalculateCharacteristics(slot);
                     return;
                 }
-                break; 
+                break;
             }
         }
         foreach (InventorySlot slot in slots)
@@ -64,10 +65,25 @@ public class InventoryManager : MonoBehaviour
                 slot.isEmpty = false;
                 slot.SetIcon(_item.icon);
                 slot.textAmount.text = _amount.ToString();
+                ñalculateCharacteristics(slot);
                 return;
             }
-        }
+        } 
+   
     }
 
+    private static void ñalculateCharacteristics(InventorySlot slot)
+    {
+
+        if (slot.item.typeItem == ItemType.Armor)
+        {
+            slot.item.increaseArmorPlayer();
+        }
+        else if (slot.item.typeItem == ItemType.Weapon)
+        {
+            slot.item.increaseDamagePlayer();
+        }
+            
+    }
 
 }

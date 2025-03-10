@@ -28,10 +28,10 @@ public class Envirenment : MonoBehaviour
 
     private void SpawnPrefabWithProbability(Vector2 position)
     {
-        float rand = Random.value; // Случайное число от 0 до 1
-
+       
         foreach (var prefabProb in prefabs)
         {
+            float rand = Random.value; // Случайное число от 0 до 1
             BoxCollider2D collider = prefabProb.GetComponent<BoxCollider2D>();
             bool isOverlapping = Physics2D.OverlapBox(position, collider.size, 0f, layerMask);
 

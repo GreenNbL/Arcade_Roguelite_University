@@ -1,7 +1,7 @@
 using UnityEngine;
 
-public enum ItemType { Default, Food, Weapon}
-public abstract class ItemScriptableObject : ScriptableObject
+public enum ItemType { Armor, Food, Weapon}
+public class ItemScriptableObject : ScriptableObject
 {
     public ItemType typeItem;
 
@@ -17,5 +17,15 @@ public abstract class ItemScriptableObject : ScriptableObject
 
     public GameObject itemPrefab;
 
-    public abstract void healPlayer();
+    public virtual void healPlayer() { }
+
+    public virtual void damagePlayer() { }
+
+    public virtual void increaseArmorPlayer() { }
+
+    public virtual void decreaseArmorPlayer() { }
+
+    public virtual void increaseDamagePlayer() { }
+
+    public virtual void decreaseDamagePlayer() { }
 }

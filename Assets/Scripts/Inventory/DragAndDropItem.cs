@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
+using static UnityEditor.Progress;
 /// IPointerDownHandler - Следит за нажатиями мышки по объекту на котором висит этот скрипт
 /// IPointerUpHandler - Следит за отпусканием мышки по объекту на котором висит этот скрипт
 /// IDragHandler - Следит за тем не водим ли мы нажатую мышку по объекту
@@ -74,6 +75,14 @@ public class DragAndDropItem : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     void NullifySlotData()
     {
         // убираем значения InventorySlot
+        if(oldSlot.item.typeItem==ItemType.Armor)
+        {
+            oldSlot.item.decreaseArmorPlayer();
+        }
+        else if (oldSlot.item.typeItem == ItemType.Weapon)
+        {
+            oldSlot.item.decreaseDamagePlayer();
+        }
         oldSlot.item = null;
         oldSlot.amount = 0;
         oldSlot.isEmpty = true;
