@@ -9,8 +9,6 @@ public class UseItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     private bool isMouseOver = false;
     private Coroutine applyCoroutine = null;
     public InventorySlot slot;
-    private float doubleClickTime = 0.3f; // Время для определения двойного клика
-    private float lastClickTime = 0f; // Время последнего клика
     private float fKeyCooldown = 0.1f; // Время ожидания между нажатиями F
     private float lastFKeyTime = 0f; // Время последнего нажатия F
     public GameObject outline;
@@ -43,7 +41,7 @@ public class UseItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 }
             }
             // Проверка нажатия клавиши F с учетом задержки
-            if (isMouseOver && Input.GetKeyDown(KeyCode.F) && slot.item.clickable && slot.item.typeItem == ItemType.Armor)
+            if (isMouseOver && Input.GetKeyDown(KeyCode.F) && slot.item.clickable && (slot.item.typeItem == ItemType.Armor || slot.item.typeItem == ItemType.Weapon))
             {
                 float currentTime = Time.time;
                 if (currentTime - lastFKeyTime >= fKeyCooldown)

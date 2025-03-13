@@ -3,7 +3,8 @@ using UnityEngine;
 using System.Collections.Generic;
 using static UnityEditor.Progress;
 using UnityEngine.UI;
-
+using Unity.VisualScripting;
+using TMPro;
 public class InventoryManager : MonoBehaviour
 {
     public Transform inventoryPanel;
@@ -14,10 +15,14 @@ public class InventoryManager : MonoBehaviour
 
     private static bool isFirstArmor = false;
 
+    private static bool isFirstWeapon = false;
+
     public GameObject UIPanel;
 
+    public static GameObject description;
     void Start()
     {
+        description=GameObject.Find("Canvas/UIPanel/DescriptionPanel/Description");
         UIPanel.SetActive(false);
         for (int i = 0; i < inventoryPanel.childCount; i++)
         {
@@ -42,14 +47,19 @@ public class InventoryManager : MonoBehaviour
                 UIPanel.SetActive(true);
                 isOpen = true;
                 CalculateArmor();
+                CalculateWeaponDamage();
             }   
         }
         if(isOpen)
         {
             CalculateArmor();
+            CalculateWeaponDamage();
         }
     }
+    private void improveItem( InventorySlot slot)
+    {
 
+    }
     public static void AddItem(ItemScriptableObject _item, int _amount)
     {
         foreach (InventorySlot slot in slots)
@@ -61,6 +71,7 @@ public class InventoryManager : MonoBehaviour
                     slot.amount += _amount;
                     slot.textAmount.text = slot.amount.ToString();
                     сalculateCharacteristics(slot);
+                    updateLevel(slot);
                     return;
                 }
                 break;
@@ -81,6 +92,12 @@ public class InventoryManager : MonoBehaviour
                     //slot.item.armor
                     slot.outline.SetActive(true);
                     isFirstArmor = true;
+                }
+                if (!isFirstWeapon && slot.item.typeItem == ItemType.Weapon)
+                {
+                    //slot.item.armor
+                    slot.outline.SetActive(true);
+                    isFirstWeapon = true;
                 }
                 return;
             }
@@ -158,46 +175,63 @@ public class InventoryManager : MonoBehaviour
         // Смотрим на состояние шлема
         if (helmetSlot != null)
         {
-            Debug.Log("Есть шлем ");
+           // Debug.Log("Есть шлем ");
             helmetSlot.item.increaseArmorPlayer(); // Предполагаем, что есть метод получения значения брони
         }
 
         // Смотрим на состояние бронь и штанов
         if (chestSlot != null)
         {
-            Debug.Log("Есть броня ");
+            //Debug.Log("Есть броня ");
             chestSlot.item.increaseArmorPlayer();
         }
         if (pantsSlot != null)
         {
-            Debug.Log("Есть штаны ");
+            //Debug.Log("Есть штаны ");
             pantsSlot.item.increaseArmorPlayer();
         }
         GameObject.FindGameObjectWithTag("Player").GetComponent<HeroStotistic>().printArmor();
     }
-    public static void findFirstArmor()
+    public static void CalculateWeaponDamage()
     {
-        foreach (InventorySlot slot in slots)
+        // Создаем переменные для хранения информации об экипировке
+        InventorySlot weaponSlot = null;
+      
+        GameObject.FindGameObjectWithTag("Player").GetComponent<HeroStotistic>().setStartDamage();
+        // Итерируемся по слотам и проверяем их положение
+        for (int i = 0; i < slots.Count; i++)
         {
-            if (slot.item.typeItem == ItemType.Armor)
+            var slot = slots[i];
+
+            // Проверяем, активен ли outline и есть ли предмет в слоте
+            if (!slot.isEmpty && slot.outline.activeSelf)
             {
-                slot.outline.SetActive(true);
-                return;
+                // Проверяем тип предмета и сохраняем в соответствующие переменные
+                if (slot.item.typeItem == ItemType.Weapon)
+                {
+                    weaponSlot = slot;
+                    break;
+                }
             }
         }
+        if (weaponSlot != null)
+        {
+           // Debug.Log("Есть оружие ");
+            weaponSlot.item.increaseDamagePlayer(); // Предполагаем, что есть метод получения значения брони
+        }
 
-        isFirstArmor = false;
+        GameObject.FindGameObjectWithTag("Player").GetComponent<HeroStotistic>().printDamage();
     }
     private static void сalculateCharacteristics(InventorySlot slot)
     {
 
         if (slot.item.typeItem == ItemType.Armor)
         {
-            //CalculateArmor();
+            CalculateArmor();
         }
         else if (slot.item.typeItem == ItemType.Weapon)
         {
-            slot.item.increaseDamagePlayer();
+            CalculateWeaponDamage();
         }
             
     }
@@ -214,5 +248,25 @@ public class InventoryManager : MonoBehaviour
             }
         }
     }
-
+    public static void setDescription(string _description)
+    {
+        description.GetComponent<TMP_Text>().text= _description; 
+    }
+    public static void updateLevel(InventorySlot slot)
+    {
+        if (slot.item.improveable && slot.item.maxAmount==slot.amount && slot.item.maxLevel>slot.item.level)
+        {
+            foreach (Gain gain in slot.item.gains)
+            {
+                if(gain.levelIncrease==slot.item.level)
+                {
+                    slot.item.characteristic += slot.item.characteristic * gain.amountChange / 100;
+                    slot.amount = 1;
+                    slot.textAmount.text= 1.ToString();
+                    slot.item.level++;
+                    return;
+                }
+            }
+        }
+    }
 }

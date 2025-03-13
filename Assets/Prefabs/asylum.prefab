@@ -147,5 +147,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efe4da35250dbc9fbb5e55ca4c61ef69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  probability: 0.5
+  probability: 0.05
   prefab: {fileID: 6970288152490886047}

@@ -15,6 +15,8 @@ public class HeroStotistic : MonoBehaviour
 
     public int damage = 10;
 
+    private int startDamage = 0;
+
     public TMP_Text healthPoint;
 
     public TMP_Text scrorePoint;
@@ -33,7 +35,14 @@ public class HeroStotistic : MonoBehaviour
 
     public void setDamage(int _damage)
     {
-        damage = _damage;
+        damage += _damage;
+    }
+    public void setStartDamage()
+    {
+        damage = startDamage;
+    }
+    public void printDamage()
+    {
         damagePoint.text = damage.ToString();
     }
     public void damageHero(int _damage)
@@ -79,7 +88,7 @@ public class HeroStotistic : MonoBehaviour
 
     public void increaseDamage(int _damage)
     {
-        Debug.Log("Урон");
+        //Debug.Log("Урон");
         damage += _damage;
         damagePoint.text = damage.ToString();
     }

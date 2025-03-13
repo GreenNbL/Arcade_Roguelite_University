@@ -5,10 +5,11 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
 using static UnityEditor.Progress;
+using System.Text;
 /// IPointerDownHandler - Следит за нажатиями мышки по объекту на котором висит этот скрипт
 /// IPointerUpHandler - Следит за отпусканием мышки по объекту на котором висит этот скрипт
 /// IDragHandler - Следит за тем не водим ли мы нажатую мышку по объекту
-public class DragAndDropItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler
+public class DragAndDropItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler, IPointerEnterHandler
 {
     public InventorySlot oldSlot;
     private Transform player;
@@ -19,6 +20,38 @@ public class DragAndDropItem : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         player = GameObject.FindGameObjectWithTag("Player").transform;
         // Находим скрипт InventorySlot в слоте в иерархии
         oldSlot = transform.GetComponentInParent<InventorySlot>();
+    }
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        Debug.Log("Зашли на клетку");
+        // Уведомляем InventoryManager о наведении
+        if (oldSlot != null)
+        {
+            Debug.Log(oldSlot.item.itemDescription);
+            StringBuilder description = new StringBuilder();
+            description.Append(oldSlot.item.itemDescription);
+            if (oldSlot.item.typeItem == ItemType.Weapon)
+                description.AppendFormat("\nУрон: {0}", oldSlot.item.getDamage());
+            if (oldSlot.item.typeItem == ItemType.Armor)
+                description.AppendFormat("\nБроня: {0}", oldSlot.item.getArmor());
+            if (oldSlot.item.typeItem == ItemType.Food)
+                description.AppendFormat("\nВосстановление здоровья: {0}", oldSlot.item.getHeal());
+            if (oldSlot.item.improveable)
+            {
+                description.AppendFormat("\nУровень: {0}", oldSlot.item.level);
+                if (oldSlot.item.maxLevel > oldSlot.item.level)
+                    description.AppendFormat("\nШтук до следующего уровня: {0}", oldSlot.item.maxAmount - oldSlot.amount);
+                foreach (Gain gain in oldSlot.item.gains)
+                {
+                    if (oldSlot.item.typeItem==ItemType.Weapon)
+                        description.AppendFormat("\nУвеличение урона {0}% на {1} уровне", gain.amountChange, gain.levelIncrease+1);
+                    if (oldSlot.item.typeItem == ItemType.Armor)
+                        description.AppendFormat("\nУвеличение брони {0}% на {1} уровне", gain.amountChange, gain.levelIncrease + 1);
+                }
+            }
+            InventoryManager.setDescription(description.ToString());
+        }
+        
     }
     public void OnDrag(PointerEventData eventData)
     {

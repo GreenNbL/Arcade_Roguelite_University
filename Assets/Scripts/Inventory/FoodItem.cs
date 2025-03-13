@@ -8,6 +8,10 @@ public class FoodItem : ItemScriptableObject
 
     public GameObject player;
 
+    public override int getHeal()
+    {
+        return healAmount;
+    }
     private void OnEnable()
     {
         typeItem=ItemType.Food;
