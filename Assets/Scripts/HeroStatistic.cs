@@ -11,9 +11,19 @@ public class HeroStotistic : MonoBehaviour
 
     private int startArmor = 0;
 
+    private int startAtackSpeed = 10;
+
+    public int atackSpeed = 10;
+
+    public int chanceSriticalDamage = 0;
+
+   // public int criticalDamage = 0;
+
     public int score = 0;
 
     public int damage = 10;
+
+    public int healScale = 0;
 
     private int startDamage = 0;
 
@@ -45,6 +55,14 @@ public class HeroStotistic : MonoBehaviour
     {
         damagePoint.text = damage.ToString();
     }
+    public  void increaseChanceSciticalDamage(int chance)
+    {
+        chanceSriticalDamage += chance;
+    }
+    public void setStartChanceSciticalDamage()
+    {
+        chanceSriticalDamage =0;
+    }
     public void damageHero(int _damage)
     {
         //Debug.Log("Óäàðèëè ãåðîÿ");
@@ -63,13 +81,13 @@ public class HeroStotistic : MonoBehaviour
 
     public void healHero(int _health)
     {
-        if (health + _health > maxHealth)
+        if (health + _health*(1+(healScale/100)) > maxHealth)
         {
             health = maxHealth;
         }
         else
         {
-            health += _health;
+            health += _health * (1 + (healScale / 100));
         }
        healthPoint.text = health.ToString();
     }
@@ -79,18 +97,45 @@ public class HeroStotistic : MonoBehaviour
         armor = startArmor;
        // armorPoint.text = armor.ToString();
     }
+    public void increaseAtackSpeed(int _speed)
+    {
+        //Debug.Log("ÁÐÎÍß");
+        atackSpeed += _speed;
+        //armorPoint.text = armor.ToString();
+    }
+    public void increaseAtackSpeedInPercents(int percent)
+    {
+        //Debug.Log("ÁÐÎÍß");
+        atackSpeed = atackSpeed * percent / 100;
+        //armorPoint.text = armor.ToString();
+    }
+    public void  resetAtackSpeed()
+    {
+        atackSpeed = startAtackSpeed;
+    }
     public void increaseArmor(int _armor)
     {
         //Debug.Log("ÁÐÎÍß");
         armor += _armor;
         //armorPoint.text = armor.ToString();
     }
-
+    public void increaseArmorInPercents(int percent)
+    {
+        //Debug.Log("ÁÐÎÍß");
+        armor = armor* percent/100;
+        //armorPoint.text = armor.ToString();
+    }
     public void increaseDamage(int _damage)
     {
         //Debug.Log("Óðîí");
         damage += _damage;
         damagePoint.text = damage.ToString();
+    }
+    public void increaseDamageInPercents(int percent)
+    {
+        //Debug.Log("ÁÐÎÍß");
+        damage = damage * percent / 100;
+        //armorPoint.text = armor.ToString();
     }
     public void printArmor()
     {

@@ -12,12 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5585f67a65757dd4d90aa000e47bc8f6, type: 3}
   m_Name: Apple
   m_EditorClassIdentifier: 
+  level: 1
+  maxLevel: 5
+  improveable: 0
   typeItem: 1
   itemName: Apple
   clickable: 1
   maxAmount: 2
-  itemDescription: 
+  itemDescription: "\u042F\u0431\u043B\u043E\u043A\u043E"
+  characteristic: 0
+  defaultCharacteristic: 0
   icon: {fileID: -8554988351266099219, guid: 8f6f90074249a0c4089147a0510b14d8, type: 3}
   itemPrefab: {fileID: 81335122733854643, guid: 99b10476d2a955c4a97704b42cc6756a, type: 3}
+  gains: []
   healAmount: 5
   player: {fileID: 0}

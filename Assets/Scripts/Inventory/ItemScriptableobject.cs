@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ItemType { Armor, Food, Weapon}
+public enum ItemType { Armor, Food, Weapon , Recipe}
 public class ItemScriptableObject : ScriptableObject
 {
     public int level = 1;
@@ -40,12 +40,21 @@ public class ItemScriptableObject : ScriptableObject
 
     public virtual void increaseArmorPlayer() { }
 
+    public virtual void increaseArmorInPercentsPlayer() { }
+
     public virtual void decreaseArmorPlayer() { }
 
     public virtual void increaseDamagePlayer() { }
 
+    public virtual void increaseSpeedAtackPlayer() { }
+
+    public virtual void increaseSpeedAtackInPercentsPlayer() { }
+
+    public virtual void increaseDamageInPercentsPlayer() { }
+
     public virtual void decreaseDamagePlayer() { }
 
+    public virtual void calculateRecipe(List<InventorySlot> slots, int index) { }
     public virtual int getDamage() { return 0; }
     public virtual int getArmor() { return 0; }
     public virtual int getHeal() { return 0; }

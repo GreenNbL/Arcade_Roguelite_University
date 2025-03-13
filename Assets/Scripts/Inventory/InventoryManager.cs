@@ -48,12 +48,14 @@ public class InventoryManager : MonoBehaviour
                 isOpen = true;
                 CalculateArmor();
                 CalculateWeaponDamage();
+                ñalculateRecipe();
             }   
         }
         if(isOpen)
         {
             CalculateArmor();
             CalculateWeaponDamage();
+            ñalculateRecipe();
         }
     }
     private void improveItem( InventorySlot slot)
@@ -77,6 +79,7 @@ public class InventoryManager : MonoBehaviour
                 break;
             }
         }
+        int i = 0;
         foreach (InventorySlot slot in slots)
         {
             if (slot.isEmpty == true)
@@ -99,10 +102,30 @@ public class InventoryManager : MonoBehaviour
                     slot.outline.SetActive(true);
                     isFirstWeapon = true;
                 }
+                if (slot.item is Recipe)
+                {
+                    slot.item.calculateRecipe(slots, i);
+                }
                 return;
             }
+            i++;
         } 
    
+    }
+    public static void ñalculateRecipe()
+    {
+        GameObject.FindGameObjectWithTag("Player").GetComponent<HeroStotistic>().setStartChanceSciticalDamage();
+        GameObject.FindGameObjectWithTag("Player").GetComponent<HeroStotistic>().resetAtackSpeed();
+        for (int i = 0; i < slots.Count; i++)
+        {
+            var slot = slots[i];
+
+            // Ïðîâåðÿåì, àêòèâåí ëè outline è åñòü ëè ïðåäìåò â ñëîòå
+            if (!slot.isEmpty && slot.item is Recipe)
+            {
+                slot.item.calculateRecipe(slots, i);
+            }
+        }
     }
     public static void CalculateArmor()
     {

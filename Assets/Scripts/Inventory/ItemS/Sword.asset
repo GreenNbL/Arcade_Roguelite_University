@@ -12,12 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 958d1eaaea085e74da7b13a8dc45e88d, type: 3}
   m_Name: Sword
   m_EditorClassIdentifier: 
+  level: 1
+  maxLevel: 4
+  improveable: 1
   typeItem: 2
   itemName: Sword
   clickable: 1
-  maxAmount: 1
-  itemDescription: 
+  maxAmount: 3
+  itemDescription: "\u041C\u0435\u0447"
+  characteristic: 15
+  defaultCharacteristic: 15
   icon: {fileID: 1672173255512838553, guid: 5b943e199a6dca34c8363db8ac6befea, type: 3}
   itemPrefab: {fileID: 3593507455528956191, guid: a02e9c26bb04739439655a2cdb0cbb00, type: 3}
-  damageScore: 10
+  gains:
+  - levelIncrease: 1
+    amountChange: 50
+  - levelIncrease: 2
+    amountChange: 35
+  - levelIncrease: 3
+    amountChange: 20
   player: {fileID: 0}

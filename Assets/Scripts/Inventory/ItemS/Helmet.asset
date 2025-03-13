@@ -12,13 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d7a2e5d3685b254991d701cdd2b3de4, type: 3}
   m_Name: Helmet
   m_EditorClassIdentifier: 
+  level: 1
+  maxLevel: 3
+  improveable: 1
   typeItem: 0
   itemName: Helmet
   clickable: 1
-  maxAmount: 1
-  itemDescription: 
+  maxAmount: 5
+  itemDescription: "\u0428\u043B\u0435\u043C"
+  characteristic: 15
+  defaultCharacteristic: 15
   icon: {fileID: 1029575583862400023, guid: 33e1d772cb08f034db0bee2aa1145e2f, type: 3}
   itemPrefab: {fileID: 252140389655280728, guid: 7086fcdade1b9ec459aa95fa2cac55f8, type: 3}
-  armorScore: 50
+  gains:
+  - levelIncrease: 1
+    amountChange: 70
+  - levelIncrease: 2
+    amountChange: 70
   player: {fileID: 0}
   armorType: 1

@@ -12,12 +12,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 958d1eaaea085e74da7b13a8dc45e88d, type: 3}
   m_Name: Axe
   m_EditorClassIdentifier: 
+  level: 1
+  maxLevel: 5
+  improveable: 1
   typeItem: 2
   itemName: Axe
   clickable: 1
-  maxAmount: 1
-  itemDescription: 
+  maxAmount: 3
+  itemDescription: "\u0422\u043E\u043F\u043E\u0440"
+  characteristic: 10
+  defaultCharacteristic: 10
   icon: {fileID: 6674386295937086461, guid: 91577f7aabcf2af49ac76821a345fe5c, type: 3}
   itemPrefab: {fileID: 1388261908228886681, guid: 1e6cee126406a0c4f8d165bc8acb1d10, type: 3}
-  damageScore: 5
+  gains:
+  - levelIncrease: 1
+    amountChange: 100
+  - levelIncrease: 2
+    amountChange: 70
+  - levelIncrease: 3
+    amountChange: 60
+  - levelIncrease: 4
+    amountChange: 50
   player: {fileID: 0}
