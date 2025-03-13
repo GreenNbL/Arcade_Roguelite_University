@@ -28,4 +28,6 @@ public class ItemScriptableObject : ScriptableObject
     public virtual void increaseDamagePlayer() { }
 
     public virtual void decreaseDamagePlayer() { }
+
+    public virtual ArmorType getArmorType() {  return ArmorType.Armor; }
 }

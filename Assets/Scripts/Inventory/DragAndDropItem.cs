@@ -74,12 +74,14 @@ public class DragAndDropItem : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     }
     void NullifySlotData()
     {
+        Debug.Log("Пытаемся выкинуть объект");
         // убираем значения InventorySlot
-        if(oldSlot.item.typeItem==ItemType.Armor)
+       /* if (oldSlot.item.typeItem == ItemType.Armor)
         {
             oldSlot.item.decreaseArmorPlayer();
-        }
-        else if (oldSlot.item.typeItem == ItemType.Weapon)
+           // InventoryManager.findFirstArmor();
+        }*/
+        if (oldSlot.item.typeItem == ItemType.Weapon)
         {
             oldSlot.item.decreaseDamagePlayer();
         }
@@ -89,48 +91,60 @@ public class DragAndDropItem : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         oldSlot.iconGO.GetComponent<Image>().color = new Color(1, 1, 1, 0);
         oldSlot.iconGO.GetComponent<Image>().sprite = null;
         oldSlot.textAmount.text = "";
+        //oldSlot.outline.SetActive(false);
+       
     }
     void ExchangeSlotData(InventorySlot newSlot)
     {
-        // Временно храним данные newSlot в отдельных переменных
-        ItemScriptableObject item = newSlot.item;
-        int amount = newSlot.amount;
-        bool isEmpty = newSlot.isEmpty;
-        GameObject iconGO = newSlot.iconGO;
-        TMP_Text itemAmountText = newSlot.textAmount;
+        Debug.Log("Пытаемся переместить в другой слот");
 
+        // Временно храним данные newSlot в отдельных переменных
+        ItemScriptableObject tempItem = newSlot.item;
+        int tempAmount = newSlot.amount;
+        bool tempIsEmpty = newSlot.isEmpty;
+        GameObject tempIconGO = Instantiate(newSlot.iconGO);
         // Заменяем значения newSlot на значения oldSlot
         newSlot.item = oldSlot.item;
         newSlot.amount = oldSlot.amount;
-        if (oldSlot.isEmpty == false)
+        newSlot.isEmpty = oldSlot.isEmpty;
+
+        // Обновляем иконку и текст для нового слота
+        if (!oldSlot.isEmpty)
         {
             newSlot.SetIcon(oldSlot.iconGO.GetComponent<Image>().sprite);
             newSlot.textAmount.text = oldSlot.amount.ToString();
+            newSlot.iconGO.GetComponent<Image>().color = Color.white; // Убедимся, что иконка видима
         }
         else
         {
-            newSlot.iconGO.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+            // Очищаем новый слот
+            newSlot.iconGO.GetComponent<Image>().color = new Color(1, 1, 1, 0); // Скрываем иконку
             newSlot.iconGO.GetComponent<Image>().sprite = null;
-            newSlot.textAmount.text = "";
+            newSlot.textAmount.text = ""; // Очищаем текст
         }
-
-        newSlot.isEmpty = oldSlot.isEmpty;
 
         // Заменяем значения oldSlot на значения newSlot сохраненные в переменных
-        oldSlot.item = item;
-        oldSlot.amount = amount;
-        if (isEmpty == false)
+        oldSlot.item = tempItem;
+        oldSlot.amount = tempAmount;
+        oldSlot.isEmpty = tempIsEmpty;
+
+        // Обновляем иконку и текст для старого слота
+        if (!tempIsEmpty)
         {
-            oldSlot.SetIcon(iconGO.GetComponent<Image>().sprite);
-            oldSlot.textAmount.text = amount.ToString();
+            oldSlot.SetIcon(tempIconGO.GetComponent<Image>().sprite);
+            oldSlot.textAmount.text = tempAmount.ToString();
+            oldSlot.iconGO.GetComponent<Image>().color = Color.white; // Убедимся, что иконка видима
         }
         else
         {
-            oldSlot.iconGO.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+            // Очищаем старый слот
+            oldSlot.iconGO.GetComponent<Image>().color = new Color(1, 1, 1, 0); // Скрываем иконку
             oldSlot.iconGO.GetComponent<Image>().sprite = null;
-            oldSlot.textAmount.text = "";
+            oldSlot.textAmount.text = ""; // Очищаем текст
         }
-
-        oldSlot.isEmpty = isEmpty;
     }
+
+
+
+
 }

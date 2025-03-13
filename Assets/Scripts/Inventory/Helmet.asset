@@ -21,3 +21,4 @@ MonoBehaviour:
   itemPrefab: {fileID: 252140389655280728, guid: 7086fcdade1b9ec459aa95fa2cac55f8, type: 3}
   armorScore: 50
   player: {fileID: 0}
+  armorType: 1

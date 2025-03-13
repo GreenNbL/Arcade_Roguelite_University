@@ -16,7 +16,6 @@ public class UseItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public GameObject outline;
     private void Start()
     {
-       
         // Находим скрипт InventorySlot в слоте в иерархии
         slot = transform.GetComponentInParent<InventorySlot>();
     }
@@ -59,8 +58,15 @@ public class UseItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     // Метод для переключения состояния рамки
     private void ToggleOutline()
     {
-        InventoryManager.setInactiveOutline(slot.item.typeItem);
-        outline.SetActive(!outline.activeSelf); // Переключение состояния рамки
+        if (slot.outline.activeSelf == true)
+        {
+            InventoryManager.setInactiveOutline(slot.item.typeItem);
+        }
+        else
+        {
+            InventoryManager.setInactiveOutline(slot.item.typeItem);
+            outline.SetActive(!outline.activeSelf); // Переключение состояния рамки
+        }
     }
 
     // Метод для регистрации наведения мыши на иконку

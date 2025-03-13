@@ -9,6 +9,8 @@ public class HeroStotistic : MonoBehaviour
 
     public int armor = 0;
 
+    private int startArmor = 0;
+
     public int score = 0;
 
     public int damage = 10;
@@ -36,9 +38,9 @@ public class HeroStotistic : MonoBehaviour
     }
     public void damageHero(int _damage)
     {
-        Debug.Log("Ударили героя");
-        Debug.Log("Броня: " +  armor);
-        Debug.Log("Урон: " + _damage * (1 - (armor / 100)));
+        //Debug.Log("Ударили героя");
+        //Debug.Log("Броня: " +  armor);
+        //Debug.Log("Урон: " + _damage * (1 - (armor / 100)));
         if (health - Mathf.Round(_damage * (1 - (armor / 100))) <= 0)
         {
             health = 0;
@@ -63,11 +65,16 @@ public class HeroStotistic : MonoBehaviour
        healthPoint.text = health.ToString();
     }
 
+    public void setStartArmor()
+    {
+        armor = startArmor;
+       // armorPoint.text = armor.ToString();
+    }
     public void increaseArmor(int _armor)
     {
-        Debug.Log("БРОНЯ");
+        //Debug.Log("БРОНЯ");
         armor += _armor;
-        armorPoint.text = armor.ToString();
+        //armorPoint.text = armor.ToString();
     }
 
     public void increaseDamage(int _damage)
@@ -75,5 +82,9 @@ public class HeroStotistic : MonoBehaviour
         Debug.Log("Урон");
         damage += _damage;
         damagePoint.text = damage.ToString();
+    }
+    public void printArmor()
+    {
+        armorPoint.text = armor.ToString();
     }
 }
