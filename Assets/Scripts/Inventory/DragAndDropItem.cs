@@ -29,25 +29,32 @@ public class DragAndDropItem : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         {
             Debug.Log(oldSlot.item.itemDescription);
             StringBuilder description = new StringBuilder();
-            description.Append(oldSlot.item.itemDescription);
-            if (oldSlot.item.typeItem == ItemType.Weapon)
-                description.AppendFormat("\nУрон: {0}", oldSlot.item.getDamage());
-            if (oldSlot.item.typeItem == ItemType.Armor)
-                description.AppendFormat("\nБроня: {0}", oldSlot.item.getArmor());
-            if (oldSlot.item.typeItem == ItemType.Food)
-                description.AppendFormat("\nВосстановление здоровья: {0}", oldSlot.item.getHeal());
-            if (oldSlot.item.improveable)
+            if (!(oldSlot.item is Recipe))
             {
-                description.AppendFormat("\nУровень: {0}", oldSlot.item.level);
-                if (oldSlot.item.maxLevel > oldSlot.item.level)
-                    description.AppendFormat("\nШтук до следующего уровня: {0}", oldSlot.item.maxAmount - oldSlot.amount);
-                foreach (Gain gain in oldSlot.item.gains)
+                description.Append(oldSlot.item.itemDescription);
+                if (oldSlot.item.typeItem == ItemType.Weapon)
+                    description.AppendFormat("\nУрон: {0}", oldSlot.item.getDamage());
+                if (oldSlot.item.typeItem == ItemType.Armor)
+                    description.AppendFormat("\nБроня: {0}", oldSlot.item.getArmor());
+                if (oldSlot.item.typeItem == ItemType.Food)
+                    description.AppendFormat("\nВосстановление здоровья: {0}", oldSlot.item.getHeal());
+                if (oldSlot.item.improveable)
                 {
-                    if (oldSlot.item.typeItem==ItemType.Weapon)
-                        description.AppendFormat("\nУвеличение урона {0}% на {1} уровне", gain.amountChange, gain.levelIncrease+1);
-                    if (oldSlot.item.typeItem == ItemType.Armor)
-                        description.AppendFormat("\nУвеличение брони {0}% на {1} уровне", gain.amountChange, gain.levelIncrease + 1);
+                    description.AppendFormat("\nУровень: {0}", oldSlot.item.level);
+                    if (oldSlot.item.maxLevel > oldSlot.item.level)
+                        description.AppendFormat("\nШтук до следующего уровня: {0}", oldSlot.item.maxAmount - oldSlot.amount);
+                    foreach (Gain gain in oldSlot.item.gains)
+                    {
+                        if (oldSlot.item.typeItem == ItemType.Weapon)
+                            description.AppendFormat("\nУвеличение урона {0}% на {1} уровне", gain.amountChange, gain.levelIncrease + 1);
+                        if (oldSlot.item.typeItem == ItemType.Armor)
+                            description.AppendFormat("\nУвеличение брони {0}% на {1} уровне", gain.amountChange, gain.levelIncrease + 1);
+                    }
                 }
+            }
+            else
+            {
+                description.Append(oldSlot.item.itemDescription);
             }
             InventoryManager.setDescription(description.ToString());
         }

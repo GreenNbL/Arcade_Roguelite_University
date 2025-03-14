@@ -25,6 +25,8 @@ public class HeroStotistic : MonoBehaviour
 
     public int healScale = 0;
 
+    public int startHealScale = 0;
+
     private int startDamage = 0;
 
     public TMP_Text healthPoint;
@@ -78,16 +80,19 @@ public class HeroStotistic : MonoBehaviour
         }
         healthPoint.text = health.ToString();
     }
-
+    public void setStarthealScale()
+    {
+        healScale = startHealScale;
+    }
     public void healHero(int _health)
     {
-        if (health + _health*(1+(healScale/100)) > maxHealth)
+        if (health + _health*(1+(healScale/100f)) > maxHealth)
         {
             health = maxHealth;
         }
         else
         {
-            health += _health * (1 + (healScale / 100));
+            health += _health * (1 + (healScale / 100f));
         }
        healthPoint.text = health.ToString();
     }
@@ -106,7 +111,7 @@ public class HeroStotistic : MonoBehaviour
     public void increaseAtackSpeedInPercents(int percent)
     {
         //Debug.Log("ÁÐÎÍß");
-        atackSpeed = atackSpeed * percent / 100;
+        atackSpeed += atackSpeed * percent / 100;
         //armorPoint.text = armor.ToString();
     }
     public void  resetAtackSpeed()
@@ -122,7 +127,7 @@ public class HeroStotistic : MonoBehaviour
     public void increaseArmorInPercents(int percent)
     {
         //Debug.Log("ÁÐÎÍß");
-        armor = armor* percent/100;
+        armor += armor* percent/100;
         //armorPoint.text = armor.ToString();
     }
     public void increaseDamage(int _damage)
@@ -134,8 +139,8 @@ public class HeroStotistic : MonoBehaviour
     public void increaseDamageInPercents(int percent)
     {
         //Debug.Log("ÁÐÎÍß");
-        damage = damage * percent / 100;
-        //armorPoint.text = armor.ToString();
+        damage += damage * percent / 100;
+        damagePoint.text = damage.ToString();
     }
     public void printArmor()
     {

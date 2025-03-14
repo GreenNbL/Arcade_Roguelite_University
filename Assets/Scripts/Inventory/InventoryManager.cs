@@ -116,6 +116,7 @@ public class InventoryManager : MonoBehaviour
     {
         GameObject.FindGameObjectWithTag("Player").GetComponent<HeroStotistic>().setStartChanceSciticalDamage();
         GameObject.FindGameObjectWithTag("Player").GetComponent<HeroStotistic>().resetAtackSpeed();
+        GameObject.FindGameObjectWithTag("Player").GetComponent<HeroStotistic>().setStarthealScale();
         for (int i = 0; i < slots.Count; i++)
         {
             var slot = slots[i];

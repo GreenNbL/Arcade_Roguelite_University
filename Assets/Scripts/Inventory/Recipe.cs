@@ -1,12 +1,14 @@
 using NUnit.Framework;
+using System;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 public enum RecipeType { AttackBooster, PowerOfProtection, HealthPotion,
     MedicalKit, LeatherArmor, CallBook, ElixirOfRecovery, MagicAmulet, GladiatorArmor }
 
 /*
-    Gladiator Armor     Увеличивает урон на 10%         Эффект усиливается, если находится в первой слоте 
+    AttackBooster     Увеличивает урон на 10%         Эффект усиливается, если находится в первой слоте 
 
     PowerOfProtection   Увеличивает защиту на 15        Срабатывает в первых 3-х слотах инвентаря
 
@@ -42,6 +44,38 @@ public class Recipe : ItemScriptableObject
         clickable = false;
 
         player = GameObject.FindGameObjectWithTag("Player");
+
+        switch (recipeType)
+        {
+            case RecipeType.AttackBooster:
+                itemDescription = "Усилитель атаки\nУвеличивает урон на 10%, если находится в первой слоте";
+                break;
+            case RecipeType.PowerOfProtection:
+                itemDescription = "Сила защиты\nУвеличивает защиту на 15, если находится в первых 3-х слотах";
+                break;
+            case RecipeType.HealthPotion:
+                itemDescription = "Зелье здоровья\nУвеличивает восстанавление здоровья на 10%, если находится в последнем слоте";
+                break;
+            case RecipeType.MedicalKit:
+                itemDescription = "Медицинский набор\nУвеличивает восстанавление здоровья на 30%, если находится в среднем слоте";
+                break;
+            case RecipeType.LeatherArmor:
+                itemDescription = "Кожаная броня\nУвеличивает защиту на 25, если броня героя ниже 30\nУвеличивает защиту на 25%, если броня героя выше 30 и ниже 50";
+                break;
+            case RecipeType.CallBook:
+                itemDescription = "Призывная книга\nУвеличивает скорость атаки на 35%, если предмет находиться под двумя предметами";
+                break;
+            case RecipeType.ElixirOfRecovery:
+             
+                ///////------------------------
+                break;
+            case RecipeType.MagicAmulet:
+                itemDescription = "Магический амулет\nУвеличивает шанс критического удара на 5%, если амулет находится под активным оружием";
+                break;
+            case RecipeType.GladiatorArmor:
+                itemDescription = "Броня гладиатора\nУвеличивает защиту на 25%, если находится среди брони";
+                break;
+        }
     }
     // Переопределяем метод использования предмета
     public override void calculateRecipe(List<InventorySlot> slots, int index)
@@ -49,39 +83,39 @@ public class Recipe : ItemScriptableObject
         switch (recipeType)
         {
             case RecipeType.AttackBooster:
-                Debug.Log("Использован Усилитель атаки!");
+                //Debug.Log("Использован Усилитель атаки!");
                 calculateAttackBooster(slots, index);
                 break;
             case RecipeType.PowerOfProtection:
-                Debug.Log("Использована Сила защиты!");
+                //Debug.Log("Использована Сила защиты!");
                 calculatePowerOfProtection(slots, index);
                 break;
             case RecipeType.HealthPotion:
-                Debug.Log("Использовано Зелье здоровья!");
+                //Debug.Log("Использовано Зелье здоровья!");
                 calculateHealthPotion(slots, index);
                 break;
             case RecipeType.MedicalKit:
-                Debug.Log("Использован Медицинский набор!");
+                //Debug.Log("Использован Медицинский набор!");
                 calculateMedicalKit(slots, index);
                 break;
             case RecipeType.LeatherArmor:
-                Debug.Log("Использована Кожаная броня!");
+                //Debug.Log("Использована Кожаная броня!");
                 calculateLeatherArmor(slots, index);
                 break;
             case RecipeType.CallBook:
-                Debug.Log("Использована Призывная книга!");
+                //Debug.Log("Использована Призывная книга!");
                 calculateCallBook(slots, index);
                 break;
             case RecipeType.ElixirOfRecovery:
-                Debug.Log("Использован Эликсир восстановления!");
+                //Debug.Log("Использован Эликсир восстановления!");
                 ///////------------------------
                 break;
             case RecipeType.MagicAmulet:
-                Debug.Log("Использован Магический амулет!");
+                //Debug.Log("Использован Магический амулет!");
                 calculateMagicAmulet(slots, index);
                 break;
             case RecipeType.GladiatorArmor:
-                Debug.Log("Использована Броня гладиатора!");
+                //Debug.Log("Использована Броня гладиатора!");
                 calculateGladiatorArmor(slots, index);
                 break;
         }
@@ -152,36 +186,28 @@ public class Recipe : ItemScriptableObject
         {
             player.GetComponent<HeroStotistic>().increaseArmorInPercents(characteristic);
             player.GetComponent<HeroStotistic>().printArmor();
+            Debug.Log("Среди брони!");
             return;
         }
-        else if ((index + 10) < 15 && slots[index + 10].item != null && slots[index + 10].item.typeItem == ItemType.Armor && slots[index + 5].outline.activeSelf == true)
+        else if ((index + 10) < 15 && slots[index + 10].item != null && slots[index + 10].item.typeItem == ItemType.Armor && slots[index + 10].outline.activeSelf == true)
         {
             player.GetComponent<HeroStotistic>().increaseArmorInPercents(characteristic);
             player.GetComponent<HeroStotistic>().printArmor();
+            Debug.Log("Среди брони!");
             return;
         }
-        else if ((index - 5) >= 0 && slots[index - 5].item != null && slots[index - 5].item.typeItem == ItemType.Armor && slots[index + 5].outline.activeSelf == true)
+        else if ((index - 5) >= 0 && slots[index - 5].item != null && slots[index - 5].item.typeItem == ItemType.Armor && slots[index - 5].outline.activeSelf == true)
         {
             player.GetComponent<HeroStotistic>().increaseArmorInPercents(characteristic);
             player.GetComponent<HeroStotistic>().printArmor();
+            Debug.Log("Среди брони!");
             return;
         }
-        else if ((index + 5) < 15 && slots[index + 5].item != null && slots[index + 5].item.typeItem == ItemType.Armor && slots[index + 5].outline.activeSelf == true)
+        else if ((index - 10) >= 0 && slots[index - 10].item != null && slots[index - 10].item.typeItem == ItemType.Armor && slots[index - 10].outline.activeSelf == true)
         {
             player.GetComponent<HeroStotistic>().increaseArmorInPercents(characteristic);
             player.GetComponent<HeroStotistic>().printArmor();
-            return;
-        }
-        else if ((index - 10) >= 0 && slots[index - 10].item != null && slots[index - 10].item.typeItem == ItemType.Armor && slots[index + 5].outline.activeSelf == true)
-        {
-            player.GetComponent<HeroStotistic>().increaseArmorInPercents(characteristic);
-            player.GetComponent<HeroStotistic>().printArmor();
-            return;
-        }
-        else if ((index - 5) >= 0 && slots[index - 5].item != null && slots[index - 5].item.typeItem == ItemType.Armor && slots[index + 5].outline.activeSelf == true)
-        {
-            player.GetComponent<HeroStotistic>().increaseArmorInPercents(characteristic);
-            player.GetComponent<HeroStotistic>().printArmor();
+            Debug.Log("Среди брони!");
             return;
         }
 
