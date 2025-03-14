@@ -4247,6 +4247,7 @@ GameObject:
   - component: {fileID: 1783125210}
   - component: {fileID: 1783125209}
   - component: {fileID: 1783125212}
+  - component: {fileID: 1783125213}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -4267,6 +4268,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+  animator: {fileID: 1783125213}
 --- !u!212 &1783125207
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4435,6 +4437,28 @@ MonoBehaviour:
   scrorePoint: {fileID: 540056016}
   armorPoint: {fileID: 1946867002}
   damagePoint: {fileID: 1486562790}
+--- !u!95 &1783125213
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1783125205}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c8bd2b651b711634791b3c3bcb6391cf, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!224 &1906385260 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8104945676257094788, guid: 052d2b603c371c843a0b7a3cb2d5f2f5, type: 3}
