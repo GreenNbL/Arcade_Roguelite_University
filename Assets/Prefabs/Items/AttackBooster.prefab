@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &81335122733854643
+--- !u!1 &5212219317283340074
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,39 +8,40 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 902833428849471910}
-  - component: {fileID: 6909402892184576234}
-  - component: {fileID: -8410737767076507274}
-  - component: {fileID: 1665147904087516005}
+  - component: {fileID: 8782945582274161565}
+  - component: {fileID: 9049568057770776004}
+  - component: {fileID: -7539244546117884993}
+  - component: {fileID: -6997580167530039477}
+  - component: {fileID: 9116617705208381979}
   m_Layer: 3
-  m_Name: apple
+  m_Name: AttackBooster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &902833428849471910
+--- !u!4 &8782945582274161565
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 81335122733854643}
+  m_GameObject: {fileID: 5212219317283340074}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.07835741, y: 0.07419022, z: 1}
+  m_LocalPosition: {x: 1.6320897, y: -1.8346617, z: 0}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &6909402892184576234
+--- !u!212 &9049568057770776004
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 81335122733854643}
+  m_GameObject: {fileID: 5212219317283340074}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -78,24 +79,38 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -8554988351266099219, guid: 040dc1ce8c900524fafa202a5ccdbef3, type: 3}
+  m_Sprite: {fileID: 7379012268557500426, guid: 6e5553450393a124583693c1a3527a38, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 3, y: 3.74}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &-8410737767076507274
+--- !u!114 &-7539244546117884993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5212219317283340074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddc33dc273b77194daaabb876f29bf17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: b98bcf024750ffa44bd7c5bb586494a7, type: 2}
+  amount: 1
+--- !u!61 &-6997580167530039477
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 81335122733854643}
+  m_GameObject: {fileID: 5212219317283340074}
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
@@ -127,26 +142,25 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3, y: 3.74}
-    newSize: {x: 3, y: 3.74}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 3, y: 3.74}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &1665147904087516005
+--- !u!114 &9116617705208381979
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 81335122733854643}
+  m_GameObject: {fileID: 5212219317283340074}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddc33dc273b77194daaabb876f29bf17, type: 3}
+  m_Script: {fileID: 11500000, guid: efe4da35250dbc9fbb5e55ca4c61ef69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: 0a9221dfe51ccb54982a82aa20950dd8, type: 2}
-  gameObject: {fileID: 0}
-  amount: 1
+  probability: 0.1
+  prefab: {fileID: 5212219317283340074}

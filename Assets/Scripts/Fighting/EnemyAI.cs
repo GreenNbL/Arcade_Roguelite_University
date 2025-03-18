@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -27,12 +29,16 @@ public class EnemyAI : MonoBehaviour
     private bool died = false;
 
     public Image healthBar;
+
+    public List<PrefabProbability> prefabs; // Список префабов с вероятностью
+
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         enemyCollider = GetComponent<Collider2D>(); // Инициализация коллайдера
         AdjustStatsBasedOnLevel(); // Настройка параметров в зависимости от уровня
         health=maxHealth;
+        prefabs = prefabs.OrderBy(p => p.GetProbability()).ToList();
     }
 
     void Update()
@@ -167,7 +173,7 @@ public class EnemyAI : MonoBehaviour
         if (distanceToPlayer <= stoppingDistance)
         {
             player.gameObject.GetComponent<HeroStotistic>().damageHero((int)attackDamage);
-            Debug.Log("Урон нанесен игроку!");
+           // Debug.Log("Урон нанесен игроку!");
         }
     }
 
@@ -190,6 +196,7 @@ public class EnemyAI : MonoBehaviour
         // Здесь можно добавить логику, которая будет выполняться при смерти врага
         //Destroy(gameObject); // Уничтожить объект врага
         animator.SetTrigger("died");
+        player.gameObject.GetComponent<HeroStotistic>().increadeScore(score);
     }
     public void Grave()
     {
@@ -203,5 +210,32 @@ public class EnemyAI : MonoBehaviour
         attackDamage += level * 2; // Пример: увеличение урона на 2 за уровень
         speed += level * 0.5f; // Может быть полезным для увеличения скорости
         attackSpeed += level * 0.1f; // Увеличение скорости атаки
+    }
+
+    private void SpawnItems()
+    {
+
+        foreach (var prefabProb in prefabs)
+        {
+            float rand = Random.value; // Случайное число от 0 до 1
+            Debug.Log("Рандомное значение= ");
+            Debug.Log(rand);
+            Debug.Log("Префаба значение= ");
+            Debug.Log(prefabProb.GetProbability());
+            BoxCollider2D collider;
+            collider = prefabProb.GetComponent<BoxCollider2D>();
+            Vector3 position = transform.position+ Vector3.up + transform.forward;
+
+            if (rand <= prefabProb.GetProbability())
+            {
+                //Debug.Log("Random.value =" + rand);
+                //Debug.Log("CumulativeProbability =" + prefabProb.GetProbability());
+                //player.position + Vector3.up + player.forward
+                Instantiate(prefabProb.GetPrefab(), position, Quaternion.identity); // Создание префаба
+                Debug.Log("Префаб создан");
+                break; // Выход из цикла после успешного спавна
+            }
+            
+        }
     }
 }

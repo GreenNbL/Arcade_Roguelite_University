@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 8782945582274161565}
   - component: {fileID: 9049568057770776004}
   - component: {fileID: -7539244546117884993}
-  - component: {fileID: -2712699437126322731}
+  - component: {fileID: -3315666174432348026}
+  - component: {fileID: -110357537707375948}
   m_Layer: 3
-  m_Name: GladiatorArmor
+  m_Name: PowerOfProtection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -101,9 +102,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddc33dc273b77194daaabb876f29bf17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: 60e191f8eb09c4743aba50ca28768f62, type: 2}
+  item: {fileID: 11400000, guid: b125f1b257b47224e935d8bec0b6224f, type: 2}
   amount: 1
---- !u!61 &-2712699437126322731
+--- !u!61 &-3315666174432348026
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -149,3 +150,17 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &-110357537707375948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5212219317283340074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efe4da35250dbc9fbb5e55ca4c61ef69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  probability: 0.1
+  prefab: {fileID: 5212219317283340074}

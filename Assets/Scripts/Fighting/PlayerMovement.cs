@@ -67,7 +67,7 @@ public class PlayerMovement : MonoBehaviour
             if (enemyScript != null)
             {
                 // Теперь вы можете взаимодействовать со скриптом
-                Debug.Log("Найден скрипт Enemy!");
+                //Debug.Log("Найден скрипт Enemy!");
                 enemyScript.TakeDamage(GetComponent<HeroStotistic>().damage); // Пример вызова метода TakeDamage
             }
         }

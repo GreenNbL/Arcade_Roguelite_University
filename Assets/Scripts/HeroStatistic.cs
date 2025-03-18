@@ -44,7 +44,11 @@ public class HeroStotistic : MonoBehaviour
         armorPoint.text= armor.ToString();
         damagePoint.text= damage.ToString();
     }
-
+    public void increadeScore(int _score)
+    {
+        score += _score;
+        scrorePoint.text= score.ToString();
+    }
     public void setDamage(int _damage)
     {
         damage += _damage;

@@ -32,7 +32,17 @@ public class Envirenment : MonoBehaviour
         foreach (var prefabProb in prefabs)
         {
             float rand = Random.value; // Случайное число от 0 до 1
-            BoxCollider2D collider = prefabProb.GetComponent<BoxCollider2D>();
+
+            BoxCollider2D collider;
+
+            if (prefabProb.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+            {
+                collider = prefabProb.transform.Find("enemy_prefab").GetComponent<BoxCollider2D>();
+            }
+            else
+            {
+                collider = prefabProb.GetComponent<BoxCollider2D>();
+            }
             bool isOverlapping = Physics2D.OverlapBox(position, collider.size, 0f, layerMask);
 
             if (!isOverlapping)

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4027609874305197872}
   - component: {fileID: 5973683453848766976}
   - component: {fileID: 1995931328808793110}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: enemy_prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146,7 +146,7 @@ Animator:
   m_GameObject: {fileID: 1373093826914761789}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 69d0071d79fcf734c91d87796426f6e9, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -182,9 +182,23 @@ MonoBehaviour:
   attackDamage: 10
   level: 1
   attackSpeed: 1
-  score: 0
+  score: 15
   animator: {fileID: 5973683453848766976}
   healthBar: {fileID: 6141584471520686618}
+  prefabs:
+  - {fileID: 5815302368539354764, guid: 99b10476d2a955c4a97704b42cc6756a, type: 3}
+  - {fileID: -839552851523239371, guid: 0757a45977fe27849841c72c5daaf236, type: 3}
+  - {fileID: 9116617705208381979, guid: 4c21b4509664463419cefa7f60170d15, type: 3}
+  - {fileID: 1306659205857521039, guid: 1e6cee126406a0c4f8d165bc8acb1d10, type: 3}
+  - {fileID: 6192211710107469407, guid: 8cbbcfe82412504459647b88a50f2a82, type: 3}
+  - {fileID: -9055609839812101511, guid: e2bc939f34ebab040977fd8039effaa9, type: 3}
+  - {fileID: -4816578813600476647, guid: bb3510dba318f5446be3bcf5264d42ca, type: 3}
+  - {fileID: -1821300956265271640, guid: 7086fcdade1b9ec459aa95fa2cac55f8, type: 3}
+  - {fileID: -3221970249186396787, guid: 456550b3917492643a45cd9f51dcd2cd, type: 3}
+  - {fileID: 5955402005770669838, guid: dea8d8b8487dc7043b991b9a06734cad, type: 3}
+  - {fileID: 4257598474269402512, guid: fdae16c2754f78a4d9a43cf9ad1d12eb, type: 3}
+  - {fileID: -110357537707375948, guid: 42302772c1c41cd4a8dc310506e39f88, type: 3}
+  - {fileID: 5814608516822395859, guid: a02e9c26bb04739439655a2cdb0cbb00, type: 3}
 --- !u!1 &4903687649831966313
 GameObject:
   m_ObjectHideFlags: 0
@@ -269,6 +283,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1242580264627296525}
+  - component: {fileID: 5270879880065541459}
   m_Layer: 6
   m_Name: enemy
   m_TagString: Untagged
@@ -293,6 +308,20 @@ Transform:
   - {fileID: 822260046374156594}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5270879880065541459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6687114015319732994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efe4da35250dbc9fbb5e55ca4c61ef69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  probability: 0.01
+  prefab: {fileID: 6687114015319732994}
 --- !u!1 &8696456835346307379
 GameObject:
   m_ObjectHideFlags: 0
