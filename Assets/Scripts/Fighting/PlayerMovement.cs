@@ -8,6 +8,10 @@ public class PlayerMovement : MonoBehaviour
 
     public Animator animator;
 
+    public float radiusAttack;
+
+    public LayerMask mask;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -50,8 +54,23 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             animator.SetTrigger("attack");
+           
         }
+    }
+    public void AttackTimeAnimation()
+    {
+        Collider2D[] hittedEnemies = Physics2D.OverlapCircleAll(transform.position, radiusAttack, mask);
 
+        foreach (Collider2D collider in hittedEnemies)
+        {
+            EnemyAI enemyScript = collider.GetComponent<EnemyAI>(); // Измените на ваш класс
+            if (enemyScript != null)
+            {
+                // Теперь вы можете взаимодействовать со скриптом
+                Debug.Log("Найден скрипт Enemy!");
+                enemyScript.TakeDamage(GetComponent<HeroStotistic>().damage); // Пример вызова метода TakeDamage
+            }
+        }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -61,6 +80,11 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.linearVelocity = Vector2.zero; // Останавливаем движение
         }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(transform.position, radiusAttack);
     }
 }
 

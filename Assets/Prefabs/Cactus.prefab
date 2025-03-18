@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efe4da35250dbc9fbb5e55ca4c61ef69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  probability: 0.03
+  probability: 0.003
   prefab: {fileID: 1791500288005406016}
 --- !u!114 &6501465868951245988
 MonoBehaviour:
