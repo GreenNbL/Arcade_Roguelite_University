@@ -1740,13 +1740,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 911502168}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0.012098904, y: 0, z: -0, w: 0.9999268}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -1.386, y: 0, z: 0}
 --- !u!114 &911502173
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3102,6 +3102,7 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 64
+  isInvisible: 0
 --- !u!212 &1783125207
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3257,7 +3258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b24568e2564c7b4aa79d76331cb99ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 50
+  health: 100
   maxHealth: 100
   armor: 0
   atackSpeed: 10
@@ -3266,6 +3267,7 @@ MonoBehaviour:
   damage: 10
   healScale: 0
   startHealScale: 0
+  startDamage: 10
   healthPoint: {fileID: 287983377}
   scrorePoint: {fileID: 540056016}
   armorPoint: {fileID: 1946867002}

@@ -8,6 +8,7 @@ TagManager:
   - Wall
   - Env
   - Bushe
+  - Enemy
   layers:
   - Default
   - TransparentFX

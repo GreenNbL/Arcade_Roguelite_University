@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HeroStotistic : MonoBehaviour
 {
@@ -36,6 +37,10 @@ public class HeroStotistic : MonoBehaviour
     public TMP_Text armorPoint;
 
     public TMP_Text damagePoint;
+
+    public Image firstLife;
+
+    public Image secondLife;
 
     private void Start()
     {
@@ -77,12 +82,25 @@ public class HeroStotistic : MonoBehaviour
         if (health - Mathf.Round(_damage * (1 - (armor / 100))) <= 0)
         {
             health = 0;
+            GetComponent<PlayerMovement>().Respawn();
+            health = maxHealth;
+            if(secondLife.IsActive())
+                secondLife.enabled = false;
+            else if (firstLife.IsActive())
+                firstLife.enabled = false;
         }
         else
         {
             health -= Mathf.Round(_damage * (1 - (armor / 100)));
         }
         healthPoint.text = health.ToString();
+    }
+    GameObject[] FindEnemiesByTag(string tag)
+    {
+        // Получаем все объекты с указанным тегом
+        GameObject[] enemiesWithTag = GameObject.FindGameObjectsWithTag(tag);
+
+        return enemiesWithTag; // Возвращаем массив найденных врагов
     }
     public void setStarthealScale()
     {
@@ -149,5 +167,9 @@ public class HeroStotistic : MonoBehaviour
     public void printArmor()
     {
         armorPoint.text = armor.ToString();
+    }
+    public void printHealth()
+    {
+        healthPoint.text = health.ToString();
     }
 }

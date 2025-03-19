@@ -48,10 +48,14 @@ public class EnemyAI : MonoBehaviour
         bewilderment.enabled = false;
         zzz.enabled = true; // Изображение zzz изначально включено
         warning.enabled = false;
-       spawnPosition = transform.position; // Запоминаем позицию спавна
+        spawnPosition = transform.position; // Запоминаем позицию спавна
         prefabs = prefabs.OrderBy(p => p.GetProbability()).ToList();
     }
-
+    public void levelUp()
+    {
+        ++level;
+        AdjustStatsBasedOnLevel();
+    }
     void Update()
     {
         if (!died)
@@ -264,12 +268,26 @@ public class EnemyAI : MonoBehaviour
 
     private void AdjustStatsBasedOnLevel()
     {
-        health += level * 10;
-        attackDamage += level * 2;
-        speed += level * 0.5f;
+        transform.localScale = new Vector3(1.0f, 1.0f, 1);
+        maxHealth += level * 10;
+        health =maxHealth;
+        attackDamage += level * 4;
+        speed += level * 0.2f;
         attackSpeed += level * 0.1f;
     }
 
+    public void Respawn()
+    {
+        bewilderment.enabled = false;
+        zzz.enabled = true; // Изображение zzz изначально включено
+        warning.enabled = false;
+        warningTimer = 0f;
+        idleTimer = 0f;
+        stopTimer = 0f;
+        isIdling = false;
+        wasChasing = false;
+        transform.position = spawnPosition;
+    }
     private void SpawnItems()
     {
         foreach (var prefabProb in prefabs)

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -13,14 +14,20 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask mask;
 
     private Collider2D heroCollider; // Ссылка на коллайдер героя
+
     private Vector3 lastPosition; // Хранит последнее положение героя
+
     public bool isInvisible = false; // Статус невидимости
+
     private SpriteRenderer spriteRenderer; // Ссылка на SpriteRenderer
+
+    private Vector3 spawnPosition;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         heroCollider = GetComponent<Collider2D>(); // Получаем коллайдер
         spriteRenderer = GetComponent<SpriteRenderer>(); // Получаем SpriteRenderer
+        spawnPosition= transform.position;
     }
 
     void Update()
@@ -53,9 +60,18 @@ public class PlayerMovement : MonoBehaviour
                         MoveToBushe(hit.transform.position); // Перемещаем героя к Bushe
                         break; // Выход из цикла после перемещения
                     }
+                    if (hit.CompareTag("Asylum"))
+                    {
+                        MoveToAsylum(hit.transform.position); // Перемещаем героя к Bushe
+                        break; // Выход из цикла после перемещения
+                    }
                 } 
             }
         }
+    }
+    public void Respawn()
+    {
+        transform.position = spawnPosition;
     }
     private void MoveToBushe(Vector3 bushePosition)
     {
@@ -67,6 +83,32 @@ public class PlayerMovement : MonoBehaviour
         heroCollider.enabled = false; // Коллайдер остается включенным
         spriteRenderer.enabled = false; // Делаем героя невидимым (отключаем визуализацию)
        
+    }
+    private void MoveToAsylum(Vector3 bushePosition)
+    {
+        Debug.Log("Вылазим из укрепа");
+        rb.linearVelocity = Vector2.zero;
+        isInvisible = true; // Обновляем статус
+        lastPosition = transform.position; // Сохраняем текущее положение
+        transform.position = bushePosition; // Перемещаем героя к Bushe
+        heroCollider.enabled = false; // Коллайдер остается включенным
+        spriteRenderer.enabled = false; // Делаем героя невидимым (отключаем визуализацию)
+        GameObject[] enemies = FindEnemiesByTag("Enemy");
+        GameObject.FindGameObjectWithTag("Player").GetComponent<HeroStotistic>().health = GameObject.FindGameObjectWithTag("Player").GetComponent<HeroStotistic>().maxHealth;
+        GameObject.FindGameObjectWithTag("Player").GetComponent<HeroStotistic>().printHealth();
+        foreach (GameObject enemy in enemies)
+        {
+            enemy.GetComponent<EnemyAI>().animator.SetTrigger("resurrect");
+            enemy.GetComponent<EnemyAI>().levelUp();
+        }
+
+    }
+    GameObject[] FindEnemiesByTag(string tag)
+    {
+        // Получаем все объекты с указанным тегом
+        GameObject[] enemiesWithTag = GameObject.FindGameObjectsWithTag(tag);
+
+        return enemiesWithTag; // Возвращаем массив найденных врагов
     }
 
     private void ReturnToLastPosition()
