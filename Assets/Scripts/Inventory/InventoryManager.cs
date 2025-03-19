@@ -89,7 +89,6 @@ public class InventoryManager : MonoBehaviour
                 slot.isEmpty = false;
                 slot.SetIcon(_item.icon);
                 slot.textAmount.text = _amount.ToString();
-                ñalculateCharacteristics(slot);
                 if (!isFirstArmor && slot.item.typeItem==ItemType.Armor)
                 {
                     //slot.item.armor
@@ -106,6 +105,7 @@ public class InventoryManager : MonoBehaviour
                 {
                     slot.item.calculateRecipe(slots, i);
                 }
+                ñalculateCharacteristics(slot);
                 return;
             }
             i++;

@@ -58,9 +58,12 @@ public class EnemyAI : MonoBehaviour
 
             if (isChasing)
             {
+                idleTimer = 0f;
+                stopTimer = 0f;
+                isIdling = false;
                 zzz.enabled = false; // Выключаем zzz при преследовании
                 healthBar.enabled = true; // Включаем индикатор здоровья
-
+                bewilderment.enabled = false;
                 if (IsPathClear(player.position))
                 {
                     wasChasing = true;

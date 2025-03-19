@@ -262,7 +262,20 @@ MonoBehaviour:
   healthBar: {fileID: 6141584471520686618}
   zzz: {fileID: 171419106622256397}
   bewilderment: {fileID: 8241038623441422828}
-  prefabs: []
+  prefabs:
+  - {fileID: 5815302368539354764, guid: 99b10476d2a955c4a97704b42cc6756a, type: 3}
+  - {fileID: -839552851523239371, guid: 0757a45977fe27849841c72c5daaf236, type: 3}
+  - {fileID: 9116617705208381979, guid: 4c21b4509664463419cefa7f60170d15, type: 3}
+  - {fileID: 1306659205857521039, guid: 1e6cee126406a0c4f8d165bc8acb1d10, type: 3}
+  - {fileID: 6192211710107469407, guid: 8cbbcfe82412504459647b88a50f2a82, type: 3}
+  - {fileID: -9055609839812101511, guid: e2bc939f34ebab040977fd8039effaa9, type: 3}
+  - {fileID: -4816578813600476647, guid: bb3510dba318f5446be3bcf5264d42ca, type: 3}
+  - {fileID: -1821300956265271640, guid: 7086fcdade1b9ec459aa95fa2cac55f8, type: 3}
+  - {fileID: -3221970249186396787, guid: 456550b3917492643a45cd9f51dcd2cd, type: 3}
+  - {fileID: 5955402005770669838, guid: dea8d8b8487dc7043b991b9a06734cad, type: 3}
+  - {fileID: 4257598474269402512, guid: fdae16c2754f78a4d9a43cf9ad1d12eb, type: 3}
+  - {fileID: -110357537707375948, guid: 42302772c1c41cd4a8dc310506e39f88, type: 3}
+  - {fileID: 5814608516822395859, guid: a02e9c26bb04739439655a2cdb0cbb00, type: 3}
 --- !u!1 &1800392460900015675
 GameObject:
   m_ObjectHideFlags: 0
