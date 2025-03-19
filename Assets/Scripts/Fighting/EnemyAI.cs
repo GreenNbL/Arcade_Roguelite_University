@@ -5,39 +5,45 @@ using UnityEngine.UI;
 
 public class EnemyAI : MonoBehaviour
 {
-    private Transform player; // Ссылка на объект игрока
-    public float chaseRadius = 10f; // Радиус преследования
-    public float stoppingDistance = 1f; // Расстояние, на котором враг останавливается от игрока
-    public float speed = 2f; // Скорость врага
-    public LayerMask obstacleMask; // Маска для определения препятствий
-    public float avoidanceDistance = 2f; // Расстояние для обнаружения препятствий
-
-    private Collider2D enemyCollider; // Коллайдер врага
-    public float health; // Здоровье врага
-    public float maxHealth = 100f; // Здоровье врага
-    public float attackDamage = 10f; // Урон атаки врага
-    public int level = 1; // Уровень врага
-    public float attackSpeed = 1f; // Скорость атаки (количество ударов в секунду)
-
-    private bool isChasing = false; // Статус преследования
-    private float attackCooldown = 0f; // Задержка между атаками
-
+    private Transform player;
+    public float chaseRadius = 10f;
+    public float stoppingDistance = 1f;
+    public float speed = 2f;
+    public LayerMask obstacleMask;
+    public float avoidanceDistance = 2f;
+    private Collider2D enemyCollider;
+    public float health;
+    public float maxHealth = 100f;
+    public float attackDamage = 10f;
+    public int level = 1;
+    public float attackSpeed = 1f;
+    private bool isChasing = false;
+    private float attackCooldown = 0f;
     public int score;
-
     public Animator animator;
-
     private bool died = false;
-
     public Image healthBar;
-
-    public List<PrefabProbability> prefabs; // Список префабов с вероятностью
+    public Image zzz;
+    public Image bewilderment;
+    public List<PrefabProbability> prefabs;
+    private Vector2 lastSeenPosition;
+    private float idleTimer = 0f;
+    private float stopTimer = 0f;
+    private bool isIdling = false;
+    private bool wasChasing = false;
+    private float stopDuration = 1f;
+    private float idleDuration = 2f;
+    private Vector2 spawnPosition; // Новая переменная для хранения позиции спавна
 
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        enemyCollider = GetComponent<Collider2D>(); // Инициализация коллайдера
-        AdjustStatsBasedOnLevel(); // Настройка параметров в зависимости от уровня
-        health=maxHealth;
+        enemyCollider = GetComponent<Collider2D>();
+        AdjustStatsBasedOnLevel();
+        health = maxHealth;
+        bewilderment.enabled = false;
+        zzz.enabled = true; // Изображение zzz изначально включено
+        spawnPosition = transform.position; // Запоминаем позицию спавна
         prefabs = prefabs.OrderBy(p => p.GetProbability()).ToList();
     }
 
@@ -45,16 +51,20 @@ public class EnemyAI : MonoBehaviour
     {
         if (!died)
         {
-            attackCooldown -= Time.deltaTime; // Уменьшение времени до следующей атаки
-            healthBar.fillAmount = (float)health / (float)maxHealth;
+            attackCooldown -= Time.deltaTime;
+            healthBar.fillAmount = health / maxHealth;
             float distanceToPlayer = Vector2.Distance(player.position, transform.position);
             isChasing = distanceToPlayer <= chaseRadius;
 
             if (isChasing)
             {
-                // Проверка, есть ли преграды между врагом и игроком
+                zzz.enabled = false; // Выключаем zzz при преследовании
+                healthBar.enabled = true; // Включаем индикатор здоровья
+
                 if (IsPathClear(player.position))
                 {
+                    wasChasing = true;
+                    lastSeenPosition = player.position;
                     ChasePlayer();
                 }
                 else
@@ -62,62 +72,89 @@ public class EnemyAI : MonoBehaviour
                     AvoidObstacles();
                 }
 
-                // Дополнительно проверить на атаку
                 TryAttackPlayer(distanceToPlayer);
+            }
+            else if (!isIdling && wasChasing)
+            {
+               // Debug.Log(" Двигаемся к последней известной позиции");
+                StartIdling();
+            }else if (isIdling)
+            {
+                HandleIdling();
             }
         }
         else
         {
-            healthBar.fillAmount =0;
+            healthBar.fillAmount = 0;
         }
     }
 
-    /*private void ChasePlayer()
+    private void StartIdling()
     {
-        Vector2 direction = (player.position - transform.position).normalized;
-
-        // Проверка расстояния до игрока для остановки
-        float distanceToPlayer = Vector2.Distance(player.position, transform.position);
-
-        if (distanceToPlayer > stoppingDistance)
+        healthBar.enabled = false; // Выключить индикатор здоровья
+        //isIdling = true;
+        bewilderment.enabled = true;
+        stopTimer += Time.deltaTime;
+        if (Vector2.Distance(transform.position, lastSeenPosition) < 0.01f)
         {
-            transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+            //Debug.Log("Возвращаемся на старое место");
+            isIdling = true;
+            bewilderment.enabled = false;
+            stopTimer = 0f;
         }
-    }*/
+        if (stopTimer >= stopDuration)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, lastSeenPosition, speed / 2 * Time.deltaTime);
+        }
+    }
+
+    private void HandleIdling()
+    {
+        idleTimer += Time.deltaTime;
+
+        if (idleTimer >= idleDuration)
+        {
+            ReturnToSpawn(); // Возврат на место спавна
+            //SpawnItems();
+            if (Vector2.Distance(transform.position, spawnPosition) < 0.01f)
+            {
+                isIdling = false;
+                idleTimer = 0f;
+                zzz.enabled = true; // Включаем zzz на месте спавна
+                wasChasing = false;
+            }
+        }
+    }
+   
+    private void ReturnToSpawn()
+    {
+        transform.position = Vector2.MoveTowards(transform.position, spawnPosition, speed/2 * Time.deltaTime);
+    }
+
     private void ChasePlayer()
     {
         Vector2 direction = (player.position - transform.position).normalized;
-
-        // Проверка расстояния до игрока для остановки
         float distanceToPlayer = Vector2.Distance(player.position, transform.position);
-
         if (distanceToPlayer > stoppingDistance)
         {
             transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
-
-            // Поворот врага в сторону движения
             if (direction.x > 0 && transform.localScale.x > 0)
             {
-                // Если игрок находится справа и враг смотрит влево, то поворачиваем вправо
-                transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, 1); // Разворачивание вправо
+                transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, 1);
             }
             else if (direction.x < 0 && transform.localScale.x < 0)
             {
-                // Если игрок находится слева и враг смотрит вправо, то поворачиваем влево
-                transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, 1); // Разворачивание влево
+                transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, 1);
             }
         }
     }
-
-
 
     private void AvoidObstacles()
     {
         Vector2 directionToPlayer = (player.position - transform.position).normalized;
-        Vector2 rightDirection = new Vector2(directionToPlayer.y, -directionToPlayer.x); // Направление вправо
-        Vector2 leftDirection = new Vector2(-directionToPlayer.y, directionToPlayer.x); // Направление влево
+        Vector2 rightDirection = new Vector2(directionToPlayer.y, -directionToPlayer.x);
+        Vector2 leftDirection = new Vector2(-directionToPlayer.y, directionToPlayer.x);
 
-        // Проверка направлений на наличие препятствий
         if (IsPathClear((Vector2)transform.position + rightDirection * avoidanceDistance))
         {
             transform.position = Vector2.MoveTowards(transform.position, (Vector2)transform.position + rightDirection, speed * Time.deltaTime);
@@ -128,7 +165,6 @@ public class EnemyAI : MonoBehaviour
         }
         else
         {
-            // Если оба направления заблокированы, слегка отойти назад
             transform.position = Vector2.MoveTowards(transform.position, (Vector2)transform.position - directionToPlayer, speed * Time.deltaTime);
         }
     }
@@ -138,50 +174,44 @@ public class EnemyAI : MonoBehaviour
         float radius = GetColliderRadius();
         float distance = Vector2.Distance(transform.position, targetPosition);
         RaycastHit2D hit = Physics2D.CircleCast(transform.position, radius, (targetPosition - (Vector2)transform.position).normalized, distance, obstacleMask);
-
-        return hit.collider == null; // Путь свободен
+        return hit.collider == null;
     }
 
     private float GetColliderRadius()
     {
-        float radius = 0.5f; // Значение по умолчанию
+        float radius = 0.5f;
         if (enemyCollider is CircleCollider2D circleCollider)
         {
-            radius = circleCollider.radius; // Радиус круга
+            radius = circleCollider.radius;
         }
         else if (enemyCollider is BoxCollider2D boxCollider)
         {
-            radius = boxCollider.size.x / 2; // Половина ширины
+            radius = boxCollider.size.x / 2;
         }
         return radius;
     }
 
-    // Метод для обработки атаки игрока
     private void TryAttackPlayer(float distanceToPlayer)
     {
         if (distanceToPlayer <= stoppingDistance && attackCooldown <= 0f)
         {
             animator.SetTrigger("attack");
-            attackCooldown = 1f / attackSpeed; // Время между атаками, основанное на скорости атаки
+            attackCooldown = 1f / attackSpeed;
         }
     }
-    // Метод для нанесения урона
+
     public void DealDamage()
     {
         float distanceToPlayer = Vector2.Distance(player.position, transform.position);
-
         if (distanceToPlayer <= stoppingDistance)
         {
             player.gameObject.GetComponent<HeroStotistic>().damageHero((int)attackDamage);
-           // Debug.Log("Урон нанесен игроку!");
         }
     }
 
-    // Метод получения урона от героя
     public void TakeDamage(float damage)
     {
         health -= damage;
-
         if (health <= 0)
         {
             Die();
@@ -190,52 +220,38 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    // Метод для обработки смерти врага
     private void Die()
     {
-        // Здесь можно добавить логику, которая будет выполняться при смерти врага
-        //Destroy(gameObject); // Уничтожить объект врага
         animator.SetTrigger("died");
         player.gameObject.GetComponent<HeroStotistic>().increadeScore(score);
     }
+
     public void Grave()
     {
         transform.localScale = new Vector3(0.3f, 0.3f, 1);
     }
-    // Метод для применения изменений в соответствии с уровнем
+
     private void AdjustStatsBasedOnLevel()
     {
-        // Увеличиваем здоровье и урон в зависимости от уровня
-        health += level * 10; // Пример: увеличение здоровья на 10 за уровень
-        attackDamage += level * 2; // Пример: увеличение урона на 2 за уровень
-        speed += level * 0.5f; // Может быть полезным для увеличения скорости
-        attackSpeed += level * 0.1f; // Увеличение скорости атаки
+        health += level * 10;
+        attackDamage += level * 2;
+        speed += level * 0.5f;
+        attackSpeed += level * 0.1f;
     }
 
     private void SpawnItems()
     {
-
         foreach (var prefabProb in prefabs)
         {
-            float rand = Random.value; // Случайное число от 0 до 1
-            Debug.Log("Рандомное значение= ");
-            Debug.Log(rand);
-            Debug.Log("Префаба значение= ");
-            Debug.Log(prefabProb.GetProbability());
-            BoxCollider2D collider;
-            collider = prefabProb.GetComponent<BoxCollider2D>();
-            Vector3 position = transform.position+ Vector3.up + transform.forward;
+            float rand = Random.value;
+            BoxCollider2D collider = prefabProb.GetComponent<BoxCollider2D>();
+            Vector3 position = transform.position + Vector3.up + transform.forward;
 
             if (rand <= prefabProb.GetProbability())
             {
-                //Debug.Log("Random.value =" + rand);
-                //Debug.Log("CumulativeProbability =" + prefabProb.GetProbability());
-                //player.position + Vector3.up + player.forward
-                Instantiate(prefabProb.GetPrefab(), position, Quaternion.identity); // Создание префаба
-                Debug.Log("Префаб создан");
-                break; // Выход из цикла после успешного спавна
+                Instantiate(prefabProb.GetPrefab(), position, Quaternion.identity);
+                break;
             }
-            
         }
     }
 }
