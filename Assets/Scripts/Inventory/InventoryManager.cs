@@ -243,7 +243,8 @@ public class InventoryManager : MonoBehaviour
            // Debug.Log("Есть оружие ");
             weaponSlot.item.increaseDamagePlayer(); // Предполагаем, что есть метод получения значения брони
         }
-
+        if (GameObject.FindGameObjectWithTag("Player").GetComponent<HeroStotistic>().damage == 0)
+            GameObject.FindGameObjectWithTag("Player").GetComponent<HeroStotistic>().damage = GameObject.FindGameObjectWithTag("Player").GetComponent<HeroStotistic>().startDamage;
         GameObject.FindGameObjectWithTag("Player").GetComponent<HeroStotistic>().printDamage();
     }
     private static void сalculateCharacteristics(InventorySlot slot)

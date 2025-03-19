@@ -23,11 +23,11 @@ public class DragAndDropItem : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Debug.Log("Зашли на клетку");
+        //Debug.Log("Зашли на клетку");
         // Уведомляем InventoryManager о наведении
-        if (oldSlot != null)
+        if (oldSlot.item != null)
         {
-            Debug.Log(oldSlot.item.itemDescription);
+            //Debug.Log(oldSlot.item.itemDescription);
             StringBuilder description = new StringBuilder();
             if (!(oldSlot.item is Recipe))
             {
@@ -114,7 +114,7 @@ public class DragAndDropItem : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     }
     void NullifySlotData()
     {
-        Debug.Log("Пытаемся выкинуть объект");
+        //Debug.Log("Пытаемся выкинуть объект");
         // убираем значения InventorySlot
        /* if (oldSlot.item.typeItem == ItemType.Armor)
         {
@@ -136,7 +136,7 @@ public class DragAndDropItem : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     }
     void ExchangeSlotData(InventorySlot newSlot)
     {
-        Debug.Log("Пытаемся переместить в другой слот");
+        //Debug.Log("Пытаемся переместить в другой слот");
 
         // Временно храним данные newSlot в отдельных переменных
         ItemScriptableObject tempItem = newSlot.item;

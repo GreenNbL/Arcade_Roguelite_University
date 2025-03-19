@@ -27,7 +27,7 @@ public class HeroStotistic : MonoBehaviour
 
     public int startHealScale = 0;
 
-    private int startDamage = 0;
+    public int startDamage = 10;
 
     public TMP_Text healthPoint;
 
