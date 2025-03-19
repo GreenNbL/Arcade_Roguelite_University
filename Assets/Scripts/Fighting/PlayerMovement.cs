@@ -12,19 +12,73 @@ public class PlayerMovement : MonoBehaviour
 
     public LayerMask mask;
 
+    private Collider2D heroCollider; // Ссылка на коллайдер героя
+    private Vector3 lastPosition; // Хранит последнее положение героя
+    public bool isInvisible = false; // Статус невидимости
+    private SpriteRenderer spriteRenderer; // Ссылка на SpriteRenderer
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        heroCollider = GetComponent<Collider2D>(); // Получаем коллайдер
+        spriteRenderer = GetComponent<SpriteRenderer>(); // Получаем SpriteRenderer
     }
 
     void Update()
     {
-        MovePlayer();
-        Attack();
+        if (!isInvisible)
+        {
+           // Debug.Log("Идем");
+            MovePlayer();
+            Attack();
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            //Debug.Log("Вылазим");
+            if (isInvisible)
+            {
+               // Debug.Log("Вылазим");
+                // Если герой уже невидимый, возвращаемся на место
+                ReturnToLastPosition();
+            }
+            else
+            {
+               // Debug.Log("Вылазим3");
+                // Проверяем наличие предмета в радиусе 1 с тегом "Bushe"
+                Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, 1f);
+
+                foreach (Collider2D hit in hits)
+                {
+                    if (hit.CompareTag("Bushe"))
+                    {
+                        MoveToBushe(hit.transform.position); // Перемещаем героя к Bushe
+                        break; // Выход из цикла после перемещения
+                    }
+                } 
+            }
+        }
+    }
+    private void MoveToBushe(Vector3 bushePosition)
+    {
+        //Debug.Log("Вылазим4");
+        rb.linearVelocity = Vector2.zero; 
+        isInvisible = true; // Обновляем статус
+        lastPosition = transform.position; // Сохраняем текущее положение
+        transform.position = bushePosition; // Перемещаем героя к Bushe
+        heroCollider.enabled = false; // Коллайдер остается включенным
+        spriteRenderer.enabled = false; // Делаем героя невидимым (отключаем визуализацию)
+       
     }
 
+    private void ReturnToLastPosition()
+    {
+        transform.position = lastPosition; // Возвращаем героя на последнее положение
+        heroCollider.enabled = true; // Включаем коллайдер
+        spriteRenderer.enabled = true; // Делаем героя видимым
+        isInvisible = false; // Обновляем статус
+    }
     private void MovePlayer()
     {
+       // Debug.Log("Идем 2");
         // Получаем ввод от игрока
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");

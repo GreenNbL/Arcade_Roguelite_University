@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,13 +26,16 @@ public class EnemyAI : MonoBehaviour
     public Image healthBar;
     public Image zzz;
     public Image bewilderment;
+    public Image warning;
     public List<PrefabProbability> prefabs;
     private Vector2 lastSeenPosition;
     private float idleTimer = 0f;
     private float stopTimer = 0f;
+    private float warningTimer = 0f;
     private bool isIdling = false;
     private bool wasChasing = false;
     private float stopDuration = 1f;
+    private float warningDuration = 1f;
     private float idleDuration = 2f;
     private Vector2 spawnPosition; // Новая переменная для хранения позиции спавна
 
@@ -43,7 +47,8 @@ public class EnemyAI : MonoBehaviour
         health = maxHealth;
         bewilderment.enabled = false;
         zzz.enabled = true; // Изображение zzz изначально включено
-        spawnPosition = transform.position; // Запоминаем позицию спавна
+        warning.enabled = false;
+       spawnPosition = transform.position; // Запоминаем позицию спавна
         prefabs = prefabs.OrderBy(p => p.GetProbability()).ToList();
     }
 
@@ -53,36 +58,59 @@ public class EnemyAI : MonoBehaviour
         {
             attackCooldown -= Time.deltaTime;
             healthBar.fillAmount = health / maxHealth;
-            float distanceToPlayer = Vector2.Distance(player.position, transform.position);
+            float distanceToPlayer = 1000;
+            if (!GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().isInvisible)
+                 distanceToPlayer = Vector2.Distance(player.position, transform.position);
             isChasing = distanceToPlayer <= chaseRadius;
-
+            if(warning.enabled )
+                warningTimer += Time.deltaTime;
+            if (!isChasing && warningTimer >= warningDuration)
+            {
+                warningTimer = 0;
+                warning.enabled = false;
+                zzz.enabled = false;
+            }
             if (isChasing)
             {
-                idleTimer = 0f;
-                stopTimer = 0f;
-                isIdling = false;
-                zzz.enabled = false; // Выключаем zzz при преследовании
-                healthBar.enabled = true; // Включаем индикатор здоровья
+                warningTimer += Time.deltaTime;
+                warning.enabled = true;
                 bewilderment.enabled = false;
-                if (IsPathClear(player.position))
+                zzz.enabled = false; // Выключаем zzz при преследовании
+                if (warningTimer >= warningDuration)
                 {
-                    wasChasing = true;
-                    lastSeenPosition = player.position;
-                    ChasePlayer();
-                }
-                else
-                {
-                    AvoidObstacles();
-                }
+                    warning.enabled = false;
+                    idleTimer = 0f;
+                    stopTimer = 0f;
+                    isIdling = false;
+                    
+                    healthBar.enabled = true; // Включаем индикатор здоровья
+                    
+                    if (IsPathClear(player.position))
+                    {
+                        wasChasing = true;
+                        lastSeenPosition = player.position;
+                        ChasePlayer();
+                    }
+                    else
+                    {
+                        AvoidObstacles();
+                    }
 
-                TryAttackPlayer(distanceToPlayer);
+                    TryAttackPlayer(distanceToPlayer);
+                }
             }
             else if (!isIdling && wasChasing)
             {
-               // Debug.Log(" Двигаемся к последней известной позиции");
+                warningTimer = 0;
+                warning.enabled = false;
+                bewilderment.enabled = false;
+                // Debug.Log(" Двигаемся к последней известной позиции");
                 StartIdling();
             }else if (isIdling)
             {
+                warningTimer = 0;
+                warning.enabled = false;
+                bewilderment.enabled = false;
                 HandleIdling();
             }
         }
