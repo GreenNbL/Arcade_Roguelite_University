@@ -99,6 +99,7 @@ public class PlayerMovement : MonoBehaviour
         foreach (GameObject enemy in enemies)
         {
             enemy.GetComponent<EnemyAI>().animator.SetTrigger("resurrect");
+            enemy.GetComponent<EnemyAI>().GetUp();
             enemy.GetComponent<EnemyAI>().levelUp();
         }
 

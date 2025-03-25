@@ -50,6 +50,7 @@ public class EnemyAI : MonoBehaviour
         warning.enabled = false;
         spawnPosition = transform.position; // Запоминаем позицию спавна
         prefabs = prefabs.OrderBy(p => p.GetProbability()).ToList();
+        healthBar.enabled = false;
     }
     public void levelUp()
     {
@@ -255,6 +256,12 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+    public void GetUp()
+    {
+        died = false;
+        enemyCollider.enabled = true;
+        wasChasing = false;
+    }
     private void Die()
     {
         animator.SetTrigger("died");
