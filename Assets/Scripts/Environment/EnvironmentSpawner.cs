@@ -33,11 +33,14 @@ public class Envirenment : MonoBehaviour
         {
             float rand = Random.value; // Случайное число от 0 до 1
 
-            BoxCollider2D collider;
+            BoxCollider2D collider=null;
 
             if (prefabProb.gameObject.layer == LayerMask.NameToLayer("Enemy"))
             {
-                collider = prefabProb.transform.Find("enemy_prefab").GetComponent<BoxCollider2D>();
+                if (prefabProb.transform.Find("enemy_prefab") != null)
+                    collider = prefabProb.transform.Find("enemy_prefab").GetComponent<BoxCollider2D>();
+                else if (prefabProb.transform.Find("Archer") != null)
+                    collider = prefabProb.transform.Find("Archer").GetComponent<BoxCollider2D>();
             }
             else
             {
