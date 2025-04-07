@@ -22,8 +22,10 @@ public class PlayerMovement : MonoBehaviour
     private SpriteRenderer spriteRenderer; // Ссылка на SpriteRenderer
 
     private Vector3 spawnPosition;
+
+    public GameObject mapGenerator;
     void Start()
-    {
+    { 
         rb = GetComponent<Rigidbody2D>();
         heroCollider = GetComponent<Collider2D>(); // Получаем коллайдер
         spriteRenderer = GetComponent<SpriteRenderer>(); // Получаем SpriteRenderer
@@ -37,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
            // Debug.Log("Идем");
             MovePlayer();
             Attack();
+            RegerateMap();
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -67,6 +70,13 @@ public class PlayerMovement : MonoBehaviour
                     }
                 } 
             }
+        }
+    }
+    private void RegerateMap()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            mapGenerator.GetComponent<MapGenerator>().RegerateMap();
         }
     }
     public void Respawn()
