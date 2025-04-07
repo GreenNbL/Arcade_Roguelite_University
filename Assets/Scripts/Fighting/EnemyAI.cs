@@ -261,6 +261,8 @@ public class EnemyAI : MonoBehaviour
         died = false;
         enemyCollider.enabled = true;
         wasChasing = false;
+        healthBar.enabled = false;
+        zzz.enabled = true;
     }
     private void Die()
     {
@@ -275,16 +277,20 @@ public class EnemyAI : MonoBehaviour
 
     private void AdjustStatsBasedOnLevel()
     {
-        transform.localScale = new Vector3(1.0f, 1.0f, 1);
-        maxHealth += level * 10;
-        health =maxHealth;
-        attackDamage += level * 4;
-        speed += level * 0.2f;
-        attackSpeed += level * 0.1f;
+        if (level > 1)
+        {
+            transform.localScale = new Vector3(1.0f, 1.0f, 1);
+            maxHealth += level * 10;
+            health = maxHealth;
+            attackDamage += level * 4;
+            speed += level * 0.2f;
+            attackSpeed += level * 0.1f;
+        }
     }
 
     public void Respawn()
     {
+        healthBar.enabled = false;
         bewilderment.enabled = false;
         zzz.enabled = true; // Изображение zzz изначально включено
         warning.enabled = false;

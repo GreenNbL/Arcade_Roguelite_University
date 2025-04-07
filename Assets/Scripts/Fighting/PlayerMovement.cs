@@ -98,9 +98,18 @@ public class PlayerMovement : MonoBehaviour
         GameObject.FindGameObjectWithTag("Player").GetComponent<HeroStotistic>().printHealth();
         foreach (GameObject enemy in enemies)
         {
-            enemy.GetComponent<EnemyAI>().animator.SetTrigger("resurrect");
-            enemy.GetComponent<EnemyAI>().GetUp();
-            enemy.GetComponent<EnemyAI>().levelUp();
+            if (enemy.GetComponent<EnemyAI>() != null)
+            {
+                enemy.GetComponent<EnemyAI>().animator.SetTrigger("resurrect");
+                enemy.GetComponent<EnemyAI>().GetUp();
+                enemy.GetComponent<EnemyAI>().levelUp();
+            }else if (enemy.GetComponent<EnemyAI_Archer>() != null)
+            {
+                //Debug.Log("Нашел EnemyAI_Archer");
+                enemy.GetComponent<EnemyAI_Archer>().animator.SetTrigger("resurrect");
+                enemy.GetComponent<EnemyAI_Archer>().GetUp();
+                enemy.GetComponent<EnemyAI_Archer>().levelUp();
+            }
         }
 
     }
@@ -160,13 +169,28 @@ public class PlayerMovement : MonoBehaviour
 
         foreach (Collider2D collider in hittedEnemies)
         {
-            EnemyAI enemyScript = collider.GetComponent<EnemyAI>(); // Измените на ваш класс
-            if (enemyScript != null)
+            if (collider.GetComponent<EnemyAI>()!=null)
             {
-                // Теперь вы можете взаимодействовать со скриптом
-                //Debug.Log("Найден скрипт Enemy!");
-                enemyScript.TakeDamage(GetComponent<HeroStotistic>().damage); // Пример вызова метода TakeDamage
+                EnemyAI enemyScript = collider.GetComponent<EnemyAI>(); // Измените на ваш класс
+                if (enemyScript != null)
+                {
+                    // Теперь вы можете взаимодействовать со скриптом
+                    //Debug.Log("Найден скрипт Enemy!");
+                    enemyScript.TakeDamage(GetComponent<HeroStotistic>().damage); // Пример вызова метода TakeDamage
+                }
             }
+            else if (collider.GetComponent<EnemyAI_Archer>() != null)
+            {
+                //Debug.Log("Найден скрипт EnemyAI_Archer!");
+                EnemyAI_Archer enemyScript = collider.GetComponent<EnemyAI_Archer>(); // Измените на ваш класс
+                if (enemyScript != null)
+                {
+                    // Теперь вы можете взаимодействовать со скриптом
+                    //Debug.Log("Найден скрипт EnemyAI_Archer!");
+                    enemyScript.TakeDamage(GetComponent<HeroStotistic>().damage); // Пример вызова метода TakeDamage
+                }
+            }
+
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
