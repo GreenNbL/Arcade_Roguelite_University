@@ -24,6 +24,9 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 spawnPosition;
 
     public GameObject mapGenerator;
+
+    //public GameObject door;
+
     void Start()
     { 
         rb = GetComponent<Rigidbody2D>();
@@ -39,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
            // Debug.Log("Идем");
             MovePlayer();
             Attack();
-            RegerateMap();
+            //RegerateMap();
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -71,14 +74,43 @@ public class PlayerMovement : MonoBehaviour
                 } 
             }
         }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, 1f);
+
+            foreach (Collider2D hit in hits)
+            {
+                if (hit.CompareTag("Door"))
+                {
+                    if (hit.GetComponent<Door>().isOpen == true)
+                    {
+                         mapGenerator.GetComponent<MapGenerator>().RegerateMap();
+                        
+                    }
+                    break; // Выход из цикла после перемещения
+                }
+            }
+        
+        }
+    }
+    /*private void OnTriggerEnter2D(Collider2D other)
+    {
+        // Или по тегу
+        if (other.CompareTag("Door"))
+        {
+            RegerateMap();
+        }
     }
     private void RegerateMap()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        if (door.GetComponent<Door>().isOpen == true)
         {
-            mapGenerator.GetComponent<MapGenerator>().RegerateMap();
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                mapGenerator.GetComponent<MapGenerator>().RegerateMap();
+            }
         }
-    }
+    }*/
     public void Respawn()
     {
         transform.position = spawnPosition;

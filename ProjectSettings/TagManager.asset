@@ -9,6 +9,7 @@ TagManager:
   - Env
   - Bushe
   - Enemy
+  - Door
   layers:
   - Default
   - TransparentFX

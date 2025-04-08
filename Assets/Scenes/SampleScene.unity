@@ -626,6 +626,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 8
+  door: {fileID: 3048548813719496202, guid: 2277cda1296f5ad42802b22dd1ab747e, type: 3}
 --- !u!4 &321860287
 Transform:
   m_ObjectHideFlags: 0
@@ -3205,6 +3206,7 @@ MonoBehaviour:
     m_Bits: 64
   isInvisible: 0
   mapGenerator: {fileID: 321860285}
+  door: {fileID: 0}
 --- !u!212 &1783125207
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class MapGenerator : MonoBehaviour
 {
@@ -8,12 +9,15 @@ public class MapGenerator : MonoBehaviour
     private int mapHeight;
     public List<PrefabProbability> prefabs; // Список префабов с вероятностью
     public LayerMask layerMask; // Маска слоя для проверки пересечения
+    public GameObject door;
 
     void Start()
     {
         // Генерация случайного размера карты от 30 до 100
         mapWidth = Random.Range(30, 101);
         mapHeight = Random.Range(30, 101);
+        Vector3 pos = new Vector3(1.5f, 0.4f, 0f);
+        Instantiate(door, pos, Quaternion.identity);
         GenerateMap();
         Envirenment envSpawner =new Envirenment(prefabs, mapWidth, mapHeight, layerMask);
         envSpawner.SpawnPrefabsInGrid();
@@ -44,6 +48,8 @@ public class MapGenerator : MonoBehaviour
         RemoveObjectsOnLayers();
         mapWidth = Random.Range(30, 101);
         mapHeight = Random.Range(30, 101);
+        Vector3 pos = new Vector3(1.5f, 0.4f, 0f);
+        Instantiate(door, pos, Quaternion.identity);
         GenerateMap();
         Envirenment envSpawner = new Envirenment(prefabs, mapWidth, mapHeight, layerMask);
         envSpawner.SpawnPrefabsInGrid();

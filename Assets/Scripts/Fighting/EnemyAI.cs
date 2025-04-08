@@ -22,7 +22,7 @@ public class EnemyAI : MonoBehaviour
     private float attackCooldown = 0f;
     public int score;
     public Animator animator;
-    private bool died = false;
+    public bool died = false;
     public Image healthBar;
     public Image zzz;
     public Image bewilderment;
