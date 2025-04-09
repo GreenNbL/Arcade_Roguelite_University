@@ -79,7 +79,7 @@ public class HeroStotistic : MonoBehaviour
         //Debug.Log("Ударили героя");
         //Debug.Log("Броня: " +  armor);
         //Debug.Log("Урон: " + _damage * (1 - (armor / 100)));
-        if (health - Mathf.Round(_damage * (1 - (armor / 100))) <= 0)
+        if (health - Mathf.Round(_damage * (1 - (armor / 100f))) <= 0)
         {
             health = 0;
             GetComponent<PlayerMovement>().Respawn();
@@ -91,7 +91,7 @@ public class HeroStotistic : MonoBehaviour
         }
         else
         {
-            health -= Mathf.Round(_damage * (1 - (armor / 100)));
+            health -= Mathf.Round(_damage * (1 - (armor / 100f)));
         }
         healthPoint.text = health.ToString();
     }
