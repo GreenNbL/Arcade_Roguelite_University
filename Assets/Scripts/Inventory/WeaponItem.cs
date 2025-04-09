@@ -8,6 +8,7 @@ public class WeaponItem : ItemScriptableObject
 
     public override int getDamage()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         return characteristic;
     }
     private void OnEnable()
@@ -26,10 +27,12 @@ public class WeaponItem : ItemScriptableObject
     }
 
     public override void increaseDamagePlayer() {
+        player = GameObject.FindGameObjectWithTag("Player");
         player.GetComponent<HeroStotistic>().increaseDamage(characteristic);
     }
 
     public override void decreaseDamagePlayer() {
+        player = GameObject.FindGameObjectWithTag("Player");
         player.GetComponent<HeroStotistic>().increaseDamage(-characteristic);
     }
 }

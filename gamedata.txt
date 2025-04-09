@@ -1,0 +1,8 @@
+{"playerName":"убивака","playerScore":15}
+{"playerName":"володя перегар","playerScore":45}
+{"playerName":"","playerScore":0}
+{"playerName":"","playerScore":0}
+{"playerName":"","playerScore":0}
+{"playerName":"Володя перегар 228","playerScore":30}
+{"playerName":"Володя перегар 228","playerScore":0}
+{"playerName":"Володя перегар 228","playerScore":30}

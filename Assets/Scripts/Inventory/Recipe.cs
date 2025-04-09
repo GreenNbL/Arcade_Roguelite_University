@@ -80,6 +80,7 @@ public class Recipe : ItemScriptableObject
     // Переопределяем метод использования предмета
     public override void calculateRecipe(List<InventorySlot> slots, int index)
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         switch (recipeType)
         {
             case RecipeType.AttackBooster:

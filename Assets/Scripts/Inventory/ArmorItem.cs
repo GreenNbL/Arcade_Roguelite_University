@@ -14,6 +14,7 @@ public class ArmorItem : ItemScriptableObject
     public ArmorType armorType;
     public override int getArmor()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         return characteristic;
     }
     private void OnEnable()
@@ -32,16 +33,19 @@ public class ArmorItem : ItemScriptableObject
     }
     public override void increaseArmorPlayer()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         player.GetComponent<HeroStotistic>().increaseArmor(characteristic);
     }
 
     public override void decreaseArmorPlayer()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         player.GetComponent<HeroStotistic>().increaseArmor(-characteristic);
     }
 
     public override ArmorType getArmorType()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         return armorType;
     }
 }

@@ -332,8 +332,9 @@ MonoBehaviour:
   attackDamage: 10
   level: 1
   attackSpeed: 1
-  score: 0
+  score: 15
   animator: {fileID: 5666591493584632406}
+  died: 0
   healthBar: {fileID: 7784081607922733838}
   zzz: {fileID: 2512635325771483052}
   bewilderment: {fileID: 7776688537768214542}
