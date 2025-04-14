@@ -632,6 +632,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fencePrefab: {fileID: 5107315796226581198, guid: 83d8877ff81cb7f4e9cc7e4deaf5f85a, type: 3}
+  mapWidth: 0
+  mapHeight: 0
   prefabs:
   - {fileID: -914521684709992212, guid: 0c373bfe4c503554d9a48a804e3d80cd, type: 3}
   - {fileID: -653242779850332006, guid: a469d75684f81d948b14ae0be25ecce2, type: 3}
@@ -642,6 +644,17 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   door: {fileID: 3048548813719496202, guid: 2277cda1296f5ad42802b22dd1ab747e, type: 3}
+  sandPrefab: {fileID: 1508968990218923899, guid: 9f5fad16e87cbcf439e1271b6631018c, type: 3}
+  dirtPrefab: {fileID: 6017244986061177470, guid: a388b1d7282a289409171c90b7cb0b81, type: 3}
+  grassPrefab: {fileID: 8954303452516191128, guid: 3a497ace2e6c7654492767566347db8d, type: 3}
+  tileSize: 0.25
+  width: 120
+  height: 120
+  noiseScale: 0.05
+  spawnChance: 0.8
+  environmentPrefabs:
+  - {fileID: 7351131443236405344, guid: a469d75684f81d948b14ae0be25ecce2, type: 3}
+  - {fileID: 1791500288005406016, guid: fa1cec744174dd94ab3175cd81de7fa4, type: 3}
 --- !u!4 &321860287
 Transform:
   m_ObjectHideFlags: 0
@@ -5116,63 +5129,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2106852122}
   m_CullTransparentMesh: 1
---- !u!1001 &3247130968866210941
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 138728083707110169, guid: 83d8877ff81cb7f4e9cc7e4deaf5f85a, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 138728083707110169, guid: 83d8877ff81cb7f4e9cc7e4deaf5f85a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.264
-      objectReference: {fileID: 0}
-    - target: {fileID: 138728083707110169, guid: 83d8877ff81cb7f4e9cc7e4deaf5f85a, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 138728083707110169, guid: 83d8877ff81cb7f4e9cc7e4deaf5f85a, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 138728083707110169, guid: 83d8877ff81cb7f4e9cc7e4deaf5f85a, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 138728083707110169, guid: 83d8877ff81cb7f4e9cc7e4deaf5f85a, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 138728083707110169, guid: 83d8877ff81cb7f4e9cc7e4deaf5f85a, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 138728083707110169, guid: 83d8877ff81cb7f4e9cc7e4deaf5f85a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 138728083707110169, guid: 83d8877ff81cb7f4e9cc7e4deaf5f85a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 138728083707110169, guid: 83d8877ff81cb7f4e9cc7e4deaf5f85a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5107315796226581198, guid: 83d8877ff81cb7f4e9cc7e4deaf5f85a, type: 3}
-      propertyPath: m_Name
-      value: fence
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 83d8877ff81cb7f4e9cc7e4deaf5f85a, type: 3}
 --- !u!1001 &8091843489494244601
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5282,4 +5238,3 @@ SceneRoots:
   - {fileID: 668160955}
   - {fileID: 1562163475}
   - {fileID: 2089248235}
-  - {fileID: 3247130968866210941}

@@ -16,9 +16,9 @@ public class Envirenment : MonoBehaviour
 
     public void SpawnPrefabsInGrid()
     {
-        for (float x = (-this.mapEnv.GetLength(0)/2) -1; x < (this.mapEnv.GetLength(0) / 2)-2; x++)
+        for (float x = (-this.mapEnv.GetLength(0)/2) ; x < (this.mapEnv.GetLength(0) / 2)-2; x++)
         {
-            for (float y = (-this.mapEnv.GetLength(1) / 2) -1;  y < (this.mapEnv.GetLength(1) / 2)-2 ; y++)
+            for (float y = (-this.mapEnv.GetLength(1) / 2) ;  y < (this.mapEnv.GetLength(1) / 2)-2 ; y++)
             {
                 Vector2 spawnPosition = new Vector2(x, y); // Позиция клетки
                 SpawnPrefabWithProbability(spawnPosition);
