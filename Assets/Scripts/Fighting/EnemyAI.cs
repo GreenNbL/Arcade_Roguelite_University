@@ -127,12 +127,14 @@ public class EnemyAI : MonoBehaviour
 
     private void StartIdling()
     {
+       
         healthBar.enabled = false; // Выключить индикатор здоровья
         //isIdling = true;
         bewilderment.enabled = true;
         stopTimer += Time.deltaTime;
         if (Vector2.Distance(transform.position, lastSeenPosition) < 0.01f)
         {
+            animator.SetTrigger("idle");
             //Debug.Log("Возвращаемся на старое место");
             isIdling = true;
             bewilderment.enabled = false;
@@ -141,38 +143,47 @@ public class EnemyAI : MonoBehaviour
         if (stopTimer >= stopDuration)
         {
             transform.position = Vector2.MoveTowards(transform.position, lastSeenPosition, speed / 2 * Time.deltaTime);
+            animator.SetTrigger("run");
         }
+        else 
+             animator.SetTrigger("idle");
     }
 
     private void HandleIdling()
     {
         idleTimer += Time.deltaTime;
-
+        
         if (idleTimer >= idleDuration)
         {
             ReturnToSpawn(); // Возврат на место спавна
             //SpawnItems();
             if (Vector2.Distance(transform.position, spawnPosition) < 0.01f)
             {
+                animator.SetTrigger("idle");
                 isIdling = false;
                 idleTimer = 0f;
                 zzz.enabled = true; // Включаем zzz на месте спавна
                 wasChasing = false;
             }
         }
+        else
+            animator.SetTrigger("idle");
     }
    
     private void ReturnToSpawn()
     {
+        animator.SetTrigger("run");
         transform.position = Vector2.MoveTowards(transform.position, spawnPosition, speed/2 * Time.deltaTime);
     }
 
     private void ChasePlayer()
     {
+        
         Vector2 direction = (player.position - transform.position).normalized;
         float distanceToPlayer = Vector2.Distance(player.position, transform.position);
         if (distanceToPlayer > stoppingDistance)
         {
+            animator.SetTrigger("run");
             transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
             if (direction.x > 0 && transform.localScale.x > 0)
             {
@@ -187,6 +198,7 @@ public class EnemyAI : MonoBehaviour
 
     private void AvoidObstacles()
     {
+        animator.SetTrigger("run");
         Vector2 directionToPlayer = (player.position - transform.position).normalized;
         Vector2 rightDirection = new Vector2(directionToPlayer.y, -directionToPlayer.x);
         Vector2 leftDirection = new Vector2(-directionToPlayer.y, directionToPlayer.x);

@@ -57,24 +57,24 @@ public class MapGenerator : MonoBehaviour
     private void GenerateMap()
     {
         // Центрирование карты
-        int startX = -mapWidth / 2;
-        int startY = -mapHeight / 2;
+        float startX = -mapWidth / 2;
+        float startY = -mapHeight / 2;
 
         // Расставляем забор по краям карты
-        for (int x = startX; x < startX + mapWidth; x++)
+        for (float x = startX; x < startX + mapWidth-0.5; x+=0.5f)
         {
             PlaceFence(x, startY, false); // Нижний край
             PlaceFence(x, startY + mapHeight - 1, false); // Верхний край
         }
 
-        for (int y = startY; y < startY + mapHeight; y++)
+        for (float y = startY; y < startY + mapHeight - 0.5; y += 0.5f)
         {
             PlaceFence(startX, y, true); // Левый край
             PlaceFence(startX + mapWidth - 1, y, true); // Правый край
         }
     }
 
-    private void PlaceFence(int x, int y, bool isVertical)
+    private void PlaceFence(float x, float y, bool isVertical)
     {
         // Позиция для размещения забора
         Vector3 position = new Vector3(x, y, 0);
