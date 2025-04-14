@@ -1,7 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
-
+public enum BiomeType
+{
+    Sand,
+    Dirt,
+    Grass
+}
 public class MapGenerator : MonoBehaviour
 {
     public GameObject fencePrefab; // ѕрефаб забора
@@ -11,6 +15,15 @@ public class MapGenerator : MonoBehaviour
     public LayerMask layerMask; // ћаска сло€ дл€ проверки пересечени€
     public GameObject door;
 
+    public GameObject sandPrefab;
+    public GameObject dirtPrefab;
+    public GameObject grassPrefab;
+    public float tileSize = 0.25f; // размер спрайта
+
+    public int width = 500;
+    public int height = 500;
+
+    public float noiseScale = 0.05f;
     void Start()
     {
         // √енераци€ случайного размера карты от 30 до 100
@@ -21,6 +34,7 @@ public class MapGenerator : MonoBehaviour
         GenerateMap();
         Envirenment envSpawner =new Envirenment(prefabs, mapWidth, mapHeight, layerMask);
         envSpawner.SpawnPrefabsInGrid();
+        GenerateBiomes();
     }
     void RemoveObjectsOnLayers()
     {
@@ -84,6 +98,42 @@ public class MapGenerator : MonoBehaviour
         if (isVertical)
         {
             fence.transform.Rotate(0, 0, 90);
+        }
+    }
+    void GenerateBiomes()
+    {
+        for (int x = -width / 2; x < width / 2; x++)
+        {
+            for (int y = -height / 2; y < height / 2; y++)
+            {
+                float noiseValue = Mathf.PerlinNoise((x + 1000) * noiseScale, (y + 1000) * noiseScale); // +1000 Ч чтобы не уходить в отрицательные значени€ шума
+                BiomeType biome = GetBiomeFromNoise(noiseValue);
+
+                GameObject prefab = GetPrefabFromBiome(biome);
+                Vector3 position = new Vector3(x * tileSize, y * tileSize, 10f);
+                Instantiate(prefab, position, Quaternion.identity, transform);
+            }
+        }
+    }
+
+    BiomeType GetBiomeFromNoise(float value)
+    {
+        if (value < 0.33f)
+            return BiomeType.Sand;
+        else if (value < 0.66f)
+            return BiomeType.Dirt;
+        else
+            return BiomeType.Grass;
+    }
+
+    GameObject GetPrefabFromBiome(BiomeType biome)
+    {
+        switch (biome)
+        {
+            case BiomeType.Sand: return sandPrefab;
+            case BiomeType.Dirt: return dirtPrefab;
+            case BiomeType.Grass: return grassPrefab;
+            default: return null;
         }
     }
 }
