@@ -367,7 +367,10 @@ public class EnemyAI_Archer : Sounds
             attackSpeed += level * 0.1f;
         }
     }
-
+    private void Ressurect()
+    {
+        transform.localScale = new Vector3(1.0f, 1.0f, 1);
+    }
     public void Respawn()
     {
         bewilderment.enabled = false;

@@ -174,6 +174,14 @@ public class EnemyAI : Sounds
     {
         animator.SetTrigger("run");
         transform.position = Vector2.MoveTowards(transform.position, spawnPosition, speed/2 * Time.deltaTime);
+        if (spawnPosition.x > 0 && transform.localScale.x > 0)
+        {
+            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, 1);
+        }
+        else if (spawnPosition.x < 0 && transform.localScale.x < 0)
+        {
+            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, 1);
+        }
     }
 
     private void ChasePlayer()
@@ -292,15 +300,19 @@ public class EnemyAI : Sounds
     {
         if (level > 1)
         {
-            transform.localScale = new Vector3(1.0f, 1.0f, 1);
+           
             maxHealth += level * 10;
             health = maxHealth;
             attackDamage += level * 4;
             speed += level * 0.2f;
             attackSpeed += level * 0.1f;
+          
         }
     }
-
+    private void Ressurect()
+    {
+        transform.localScale = new Vector3(1.0f, 1.0f, 1);
+    }
     public void Respawn()
     {
         healthBar.enabled = false;
