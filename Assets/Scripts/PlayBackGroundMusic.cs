@@ -1,11 +1,13 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayBackGroundMusic : Sounds
 {
 
-    void Start()
+    IEnumerator Start()
     {
-        PlayMusic(sounds[0],SoundsVolume.backMusicVolume);
+        yield return null; // ∆дЄм один кадр
+        PlayMusic(sounds[0], SoundsVolume.backMusicVolume);
     }
 
 }

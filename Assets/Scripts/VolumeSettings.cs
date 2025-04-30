@@ -33,6 +33,8 @@ public class VolumeSettings : MonoBehaviour
             VolumeData data = JsonUtility.FromJson<VolumeData>(json);
             SoundsVolume.effectVolume = data.effectVolume;
             SoundsVolume.backMusicVolume = data.musicVolume;
+            Debug.Log(data.effectVolume);
+            Debug.Log(data.musicVolume);
         }
         else
         {
