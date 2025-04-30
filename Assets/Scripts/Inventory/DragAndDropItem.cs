@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
-using static UnityEditor.Progress;
+
 using System.Text;
 /// IPointerDownHandler - Следит за нажатиями мышки по объекту на котором висит этот скрипт
 /// IPointerUpHandler - Следит за отпусканием мышки по объекту на котором висит этот скрипт

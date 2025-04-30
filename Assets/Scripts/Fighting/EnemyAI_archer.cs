@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EnemyAI_Archer : MonoBehaviour
+public class EnemyAI_Archer : Sounds
 {
     private Transform player;
     public float chaseRadius = 10f;
@@ -307,6 +307,7 @@ public class EnemyAI_Archer : MonoBehaviour
 
         if( distanceToPlayer <= chaseRadius)
         {
+            PlaySound(sounds[0], SoundsVolume.effectVolume);
             GameObject arrow = Instantiate(arrowPrefab, spawnPosition, Quaternion.identity);
             arrow.GetComponent<Arrow>().Initialize(player.position, attackDamage);
         }

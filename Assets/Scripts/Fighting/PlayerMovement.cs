@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : Sounds
 {
     public float moveSpeed = 5f;
 
@@ -33,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
         heroCollider = GetComponent<Collider2D>(); // Получаем коллайдер
         spriteRenderer = GetComponent<SpriteRenderer>(); // Получаем SpriteRenderer
         spawnPosition= transform.position;
+        PlayMusic(sounds[1], SoundsVolume.backMusicVolume);
     }
 
     void Update()
@@ -202,7 +203,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             animator.SetTrigger("attack");
-           
+            PlaySound(sounds[0], SoundsVolume.effectVolume);
         }
     }
     public void AttackTimeAnimation()

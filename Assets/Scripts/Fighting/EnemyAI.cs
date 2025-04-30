@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EnemyAI : MonoBehaviour
+public class EnemyAI : Sounds
 {
     private Transform player;
     public float chaseRadius = 10f;
@@ -250,6 +250,7 @@ public class EnemyAI : MonoBehaviour
 
     public void DealDamage()
     {
+        PlaySound(sounds[0], SoundsVolume.effectVolume);
         float distanceToPlayer = Vector2.Distance(player.position, transform.position);
         if (distanceToPlayer <= stoppingDistance)
         {
