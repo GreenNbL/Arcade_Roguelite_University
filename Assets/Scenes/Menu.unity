@@ -2466,8 +2466,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0412\u043E\u043B\u043E\u0434\u044F \u043F\u0435\u0440\u0435\u0433\u0430\u0440
-    228"
+  m_text: "\u0418\u0433\u0440\u043E\u043A"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 047599df60d87e94995d68022bcd4327, type: 2}
   m_sharedMaterial: {fileID: 6211919701733839314, guid: 047599df60d87e94995d68022bcd4327, type: 2}
@@ -4868,7 +4867,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 255, y: -12.000061}
+  m_AnchoredPosition: {x: 255, y: -12.000122}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1946455812

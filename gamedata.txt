@@ -1,9 +1,12 @@
 {"playerName":"убивака","playerScore":15}
-{"playerName":"володя перегар","playerScore":45}
+{"playerName":"володя","playerScore":45}
+{"playerName":"игрок","playerScore":0}
+{"playerName":"игрок","playerScore":0}
+{"playerName":"игрок","playerScore":0}
+{"playerName":"Володя 228","playerScore":30}
+{"playerName":"Паша 228","playerScore":0}
+{"playerName":"Владик","playerScore":30}
+{"playerName":"Володя 228","playerScore":0}
 {"playerName":"","playerScore":0}
 {"playerName":"","playerScore":0}
 {"playerName":"","playerScore":0}
-{"playerName":"Володя перегар 228","playerScore":30}
-{"playerName":"Володя перегар 228","playerScore":0}
-{"playerName":"Володя перегар 228","playerScore":30}
-{"playerName":"Володя перегар 228","playerScore":0}

@@ -34,6 +34,8 @@ public class HeroStotistic : MonoBehaviour
 
     public TMP_Text scrorePoint;
 
+    public TMP_Text scrorePoint2;
+
     public TMP_Text armorPoint;
 
     public TMP_Text damagePoint;
@@ -42,17 +44,22 @@ public class HeroStotistic : MonoBehaviour
 
     public Image secondLife;
 
+    public GameObject diedMenu;
+
     private void Start()
     {
         healthPoint.text= health.ToString();
         scrorePoint.text = score.ToString();
+        scrorePoint2.text = score.ToString();
         armorPoint.text= armor.ToString();
         damagePoint.text= damage.ToString();
+        diedMenu.SetActive(false);
     }
     public void increadeScore(int _score)
     {
         score += _score;
         scrorePoint.text= score.ToString();
+        scrorePoint2.text = score.ToString();
     }
     public void setDamage(int _damage)
     {
@@ -88,6 +95,13 @@ public class HeroStotistic : MonoBehaviour
                 secondLife.enabled = false;
             else if (firstLife.IsActive())
                 firstLife.enabled = false;
+            else
+            {
+                diedMenu.SetActive(true);
+                GetComponent<Collider2D>().enabled = false;
+                GetComponent<SpriteRenderer>().enabled = false;
+                //gameObject.SetActive(false);
+            }    
         }
         else
         {
