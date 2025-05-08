@@ -332,6 +332,9 @@ public class EnemyAI_Archer : Sounds
         {
             Die();
             died = true;
+            zzz.enabled = false; 
+            warning.enabled = false;
+            bewilderment.enabled = false;
             enemyCollider.enabled = false;
         }
     }

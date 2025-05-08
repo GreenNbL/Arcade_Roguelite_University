@@ -19,11 +19,16 @@ MonoBehaviour:
   itemName: 
   clickable: 0
   maxAmount: 1
-  itemDescription: 
+  itemDescription: "\u041C\u0430\u0433\u0438\u0447\u0435\u0441\u043A\u0438\u0439
+    \u0430\u043C\u0443\u043B\u0435\u0442\n\u0423\u0432\u0435\u043B\u0438\u0447\u0438\u0432\u0430\u0435\u0442
+    \u0448\u0430\u043D\u0441 \u043A\u0440\u0438\u0442\u0438\u0447\u0435\u0441\u043A\u043E\u0433\u043E
+    \u0443\u0434\u0430\u0440\u0430 \u043D\u0430 5%, \u0435\u0441\u043B\u0438 \u0430\u043C\u0443\u043B\u0435\u0442
+    \u043D\u0430\u0445\u043E\u0434\u0438\u0442\u0441\u044F \u043F\u043E\u0434 \u0430\u043A\u0442\u0438\u0432\u043D\u044B\u043C
+    \u043E\u0440\u0443\u0436\u0438\u0435\u043C"
   characteristic: 5
   defaultCharacteristic: 5
   icon: {fileID: 7379012268557500426, guid: 6e5553450393a124583693c1a3527a38, type: 3}
-  itemPrefab: {fileID: 5212219317283340074, guid: 4c21b4509664463419cefa7f60170d15, type: 3}
+  itemPrefab: {fileID: 5212219317283340074, guid: dea8d8b8487dc7043b991b9a06734cad, type: 3}
   gains: []
   recipeType: 7
   player: {fileID: 0}
