@@ -324,7 +324,7 @@ MonoBehaviour:
   sounds:
   - {fileID: 8300000, guid: a06b6f6955153d54a9b2c1f7d6bc3526, type: 3}
   chaseRadius: 3
-  stoppingDistance: 1
+  stoppingDistance: 1.2
   speed: 2
   obstacleMask:
     serializedVersion: 2

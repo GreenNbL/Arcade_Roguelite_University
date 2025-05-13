@@ -18,8 +18,6 @@ public class HeroStotistic : MonoBehaviour
 
     public int chanceSriticalDamage = 0;
 
-   // public int criticalDamage = 0;
-
     public int score = 0;
 
     public int damage = 10;
@@ -83,9 +81,7 @@ public class HeroStotistic : MonoBehaviour
     }
     public void damageHero(int _damage)
     {
-        //Debug.Log("Ударили героя");
-        //Debug.Log("Броня: " +  armor);
-        //Debug.Log("Урон: " + _damage * (1 - (armor / 100)));
+     
         if (health - Mathf.Round(_damage * (1 - (armor / 100f))) <= 0)
         {
             health = 0;
@@ -100,7 +96,6 @@ public class HeroStotistic : MonoBehaviour
                 diedMenu.SetActive(true);
                 GetComponent<Collider2D>().enabled = false;
                 GetComponent<SpriteRenderer>().enabled = false;
-                //gameObject.SetActive(false);
             }    
         }
         else
@@ -111,10 +106,9 @@ public class HeroStotistic : MonoBehaviour
     }
     GameObject[] FindEnemiesByTag(string tag)
     {
-        // Получаем все объекты с указанным тегом
         GameObject[] enemiesWithTag = GameObject.FindGameObjectsWithTag(tag);
 
-        return enemiesWithTag; // Возвращаем массив найденных врагов
+        return enemiesWithTag; 
     }
     public void setStarthealScale()
     {
@@ -136,19 +130,14 @@ public class HeroStotistic : MonoBehaviour
     public void setStartArmor()
     {
         armor = startArmor;
-       // armorPoint.text = armor.ToString();
     }
     public void increaseAtackSpeed(int _speed)
     {
-        //Debug.Log("БРОНЯ");
-        atackSpeed += _speed;
-        //armorPoint.text = armor.ToString();
+        atackSpeed += _speed;   
     }
     public void increaseAtackSpeedInPercents(int percent)
     {
-        //Debug.Log("БРОНЯ");
         atackSpeed += atackSpeed * percent / 100;
-        //armorPoint.text = armor.ToString();
     }
     public void  resetAtackSpeed()
     {
@@ -156,25 +145,19 @@ public class HeroStotistic : MonoBehaviour
     }
     public void increaseArmor(int _armor)
     {
-        //Debug.Log("БРОНЯ");
         armor += _armor;
-        //armorPoint.text = armor.ToString();
     }
     public void increaseArmorInPercents(int percent)
     {
-        //Debug.Log("БРОНЯ");
         armor += armor* percent/100;
-        //armorPoint.text = armor.ToString();
     }
     public void increaseDamage(int _damage)
     {
-        //Debug.Log("Урон");
         damage += _damage;
         damagePoint.text = damage.ToString();
     }
     public void increaseDamageInPercents(int percent)
     {
-        //Debug.Log("БРОНЯ");
         damage += damage * percent / 100;
         damagePoint.text = damage.ToString();
     }

@@ -115,5 +115,9 @@ public class UIManager : MonoBehaviour
         settingsPanel.SetActive(true);
         scorePanel.SetActive(false);
     }
-    
+    public void OnClickExit()
+    {
+        Application.Quit();
+    }
+
 }

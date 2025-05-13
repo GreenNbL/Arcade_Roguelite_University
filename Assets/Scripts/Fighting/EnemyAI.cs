@@ -8,7 +8,7 @@ public class EnemyAI : Sounds
 {
     private Transform player;
     public float chaseRadius = 10f;
-    public float stoppingDistance = 1f;
+    public float stoppingDistance = 1.5f;
     public float speed = 2f;
     public LayerMask obstacleMask;
     public float avoidanceDistance = 2f;
