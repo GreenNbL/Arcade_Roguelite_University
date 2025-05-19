@@ -33,7 +33,7 @@ public class PlayerMovement : Sounds
         heroCollider = GetComponent<Collider2D>(); // Получаем коллайдер
         spriteRenderer = GetComponent<SpriteRenderer>(); // Получаем SpriteRenderer
         spawnPosition= transform.position;
-        PlayMusic(sounds[1], SoundsVolume.backMusicVolume);
+        //PlayMusic(sounds[1], SoundsVolume.backMusicVolume);
     }
 
     void Update()

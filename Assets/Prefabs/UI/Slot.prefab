@@ -468,7 +468,7 @@ MonoBehaviour:
   item: {fileID: 0}
   amount: 0
   isEmpty: 1
-  iconGO: {fileID: 0}
-  textAmount: {fileID: 0}
+  iconGO: {fileID: 7307991874899478406}
+  textAmount: {fileID: 4778230992543513731}
   outline: {fileID: 6026747405899797258}
   id: 0

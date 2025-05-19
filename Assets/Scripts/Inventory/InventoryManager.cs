@@ -21,8 +21,10 @@ public class InventoryManager : MonoBehaviour
     public static GameObject description;
     void Start()
     {
+
         description=GameObject.Find("Canvas/UIPanel/DescriptionPanel/Description");
         UIPanel.SetActive(false);
+        slots.Clear();
         for (int i = 0; i < inventoryPanel.childCount; i++)
         {
             if(inventoryPanel.GetChild(i).GetComponent<InventorySlot>() != null)
@@ -30,6 +32,16 @@ public class InventoryManager : MonoBehaviour
                 slots.Add(inventoryPanel.GetChild(i).GetComponent<InventorySlot>());
             }
         }
+        /*// Очищаем старые слоты (если есть)
+        slots.Clear();
+
+        // Заполняем список заново
+        for (int i = 0; i < inventoryPanel.childCount; i++)
+        {
+            var slot = inventoryPanel.GetChild(i).GetComponent<InventorySlot>();
+            if (slot != null)
+                slots.Add(slot);
+        }*/
     }
 
     private void Update()

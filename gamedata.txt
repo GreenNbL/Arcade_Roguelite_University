@@ -12,3 +12,14 @@
 {"playerName":"","playerScore":0}
 {"playerName":"","playerScore":0}
 {"playerName":"1232453","playerScore":30}
+{"playerName":"апрол","playerScore":45}
+{"playerName":"fhgjkl;","playerScore":15}
+{"playerName":"dfghdfjgkl","playerScore":30}
+{"playerName":"вапраоплр","playerScore":15}
+{"playerName":"мить","playerScore":0}
+{"playerName":"йцуцкеун","playerScore":0}
+{"playerName":"12324","playerScore":30}
+{"playerName":"qazwsx","playerScore":45}
+{"playerName":"vbn","playerScore":15}
+{"playerName":"nm,./","playerScore":135}
+{"playerName":"fvggb","playerScore":15}
