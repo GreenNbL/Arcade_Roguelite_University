@@ -287,6 +287,7 @@ public class EnemyAI : Sounds
     }
     private void Die()
     {
+        Debug.Log("Убили");
         animator.SetTrigger("died");
         player.gameObject.GetComponent<HeroStotistic>().increadeScore(score);
     }
@@ -312,6 +313,7 @@ public class EnemyAI : Sounds
     private void Ressurect()
     {
         transform.localScale = new Vector3(1.0f, 1.0f, 1);
+        animator.ResetTrigger("resurrect");
     }
     public void Respawn()
     {

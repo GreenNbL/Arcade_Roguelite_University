@@ -143,15 +143,21 @@ public class PlayerMovement : Sounds
         {
             if (enemy.GetComponent<EnemyAI>() != null)
             {
+                Debug.Log("Возродились");
                 enemy.GetComponent<EnemyAI>().animator.SetTrigger("resurrect");
+           
                 enemy.GetComponent<EnemyAI>().GetUp();
                 enemy.GetComponent<EnemyAI>().levelUp();
-            }else if (enemy.GetComponent<EnemyAI_Archer>() != null)
+                //enemy.GetComponent<EnemyAI>().animator.ResetTrigger("resurrect");
+            }
+            else if (enemy.GetComponent<EnemyAI_Archer>() != null)
             {
                 //Debug.Log("Нашел EnemyAI_Archer");
                 enemy.GetComponent<EnemyAI_Archer>().animator.SetTrigger("resurrect");
+               // enemy.GetComponent<EnemyAI>().animator.ResetTrigger("resurrect");
                 enemy.GetComponent<EnemyAI_Archer>().GetUp();
                 enemy.GetComponent<EnemyAI_Archer>().levelUp();
+               // enemy.GetComponent<EnemyAI>().animator.ResetTrigger("resurrect");
             }
         }
 

@@ -373,6 +373,7 @@ public class EnemyAI_Archer : Sounds
     private void Ressurect()
     {
         transform.localScale = new Vector3(1.0f, 1.0f, 1);
+        animator.ResetTrigger("resurrect");
     }
     public void Respawn()
     {
