@@ -144,7 +144,8 @@ public class PlayerMovement : Sounds
             if (enemy.GetComponent<EnemyAI>() != null)
             {
                 Debug.Log("Возродились");
-                enemy.GetComponent<EnemyAI>().animator.SetTrigger("resurrect");
+                if (enemy.GetComponent<EnemyAI>().died==true)
+                    enemy.GetComponent<EnemyAI>().animator.SetTrigger("resurrect");
            
                 enemy.GetComponent<EnemyAI>().GetUp();
                 enemy.GetComponent<EnemyAI>().levelUp();
@@ -153,7 +154,8 @@ public class PlayerMovement : Sounds
             else if (enemy.GetComponent<EnemyAI_Archer>() != null)
             {
                 //Debug.Log("Нашел EnemyAI_Archer");
-                enemy.GetComponent<EnemyAI_Archer>().animator.SetTrigger("resurrect");
+                if (enemy.GetComponent<EnemyAI_Archer>().died == true)
+                    enemy.GetComponent<EnemyAI_Archer>().animator.SetTrigger("resurrect");
                // enemy.GetComponent<EnemyAI>().animator.ResetTrigger("resurrect");
                 enemy.GetComponent<EnemyAI_Archer>().GetUp();
                 enemy.GetComponent<EnemyAI_Archer>().levelUp();
